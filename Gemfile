@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
@@ -14,4 +14,6 @@ group :development, :test do
   gem 'rspec-core'
   gem 'rubocop', require: false
 end
-gem "json", "~> 2.5"
+gem 'json', '~> 2.5'
+
+gem 'passwordmasker', '~> 1.2'
