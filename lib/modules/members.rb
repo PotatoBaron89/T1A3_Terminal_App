@@ -3,6 +3,7 @@
 require_relative '../exceptions/bad_username'
 require_relative '../exceptions/bad_password'
 require_relative '../exceptions/user_exists'
+require_relative '../exceptions/standard_error'
 require_relative './utilities'
 
 # DOCUMENTATION
@@ -15,12 +16,35 @@ require_relative './utilities'
 # @method --- register
 #     @info sends user to registration screen
 #
-
 module Membership
+  include BCrypt
+
+  def self.authenticate_user(username, password, list_of_users)
+    puts 'Authenticating'
+
+    list_of_users.each do |user_info|
+      next unless user_info[username.to_s]['username'] == username &&
+                  verify_hash_digest(user_info[username.to_s]['password']) == password
+
+      puts 'Successfully logged in'
+      gets
+      return true
+    end
+    # Look ended, no match found, give error and let user retry
+    raise IncorrectLogin
+  rescue IncorrectLogin => e
+    StandardError.let_user_retry(e)
+    retry
+  end
+
+  def self.verify_hash_digest(password)
+    BCrypt::Password.new(password)
+  end
 
   def self.login
-    puts "User entered: #{self::Utils.request_username}"
-    puts "User entered: #{self::Utils.request_password}"
+    puts "User entered: #{username = self::Utils.request_username}"
+    puts "User entered: #{password = self::Utils.request_password}"
+    Utilities::Data.lookup(Utilities.user_db, username, password)
   end
 
   def self.logout
@@ -34,14 +58,11 @@ module Membership
 
     puts "User entered: #{password = Utilities.salt_data(self::Utils.request_password)}"
     Utilities::Data.append_data(
-      { username.to_sym => { username: username, password: password } },
-      Utilities.user_db
+      { username.to_sym => { username: username, password: password } }, Utilities.user_db
     )
     puts 'You are now registered.'
   rescue UserExists => e
-    system 'clear'
-    puts e
-    gets
+    StandardError.let_user_retry(e)
     retry
   end
 
@@ -89,12 +110,14 @@ module Membership
     def self.user_exists?(username)
       Utilities::Data.lookup(Utilities.user_db, username)
     end
+
+    def self.get_password(username)
+      Utilities::Data.lookup(Utilities.user_db, username, :password)
+    end
   end
 
 end
 
 Membership.setup_db
-
-p Membership::Utils.user_exists?('sam')
-gets
+Membership.authenticate_user('abc', '12345678', JSON.parse(File.read(Utilities.user_db)))
 Membership.register

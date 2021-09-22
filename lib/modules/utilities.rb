@@ -34,7 +34,7 @@ module Utilities
       end
     end
 
-    def self.lookup(file_location, string_to_search)
+    def self.lookup(file_location, string_to_search, *args)
       data = JSON.parse(File.read(file_location), { symbolize_keys: true })
 
       puts "lookup -- #{string_to_search}"
@@ -46,5 +46,7 @@ module Utilities
       end
       false
     end
+
+
   end
 end
