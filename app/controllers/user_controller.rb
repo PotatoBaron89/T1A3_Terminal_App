@@ -10,5 +10,4 @@ class User
     @password = password
   end
 
-
 end

@@ -4,7 +4,9 @@ require_relative '../exceptions/bad_username'
 require_relative '../exceptions/bad_password'
 require_relative '../exceptions/user_exists'
 require_relative '../exceptions/standard_error'
+require_relative '../exceptions/incorrect_login'
 require_relative './utilities'
+require_relative './session'
 
 # DOCUMENTATION
 #
@@ -29,6 +31,10 @@ module Membership
       puts 'Successfully logged in'
       gets
       return true
+    rescue NoMethodError => e
+      # log error
+      puts 'Incorrect login information required'
+      return false
     end
     # Look ended, no match found, give error and let user retry
     raise IncorrectLogin
@@ -42,9 +48,11 @@ module Membership
   end
 
   def self.login
-    puts "User entered: #{username = self::Utils.request_username}"
-    puts "User entered: #{password = self::Utils.request_password}"
-    Utilities::Data.lookup(Utilities.user_db, username, password)
+    username = self::Utils.request_username
+    password = self::Utils.request_password
+
+    Membership.authenticate_user(username, password, Utilities.user_db_get)
+
   end
 
   def self.logout
@@ -58,7 +66,7 @@ module Membership
 
     puts "User entered: #{password = Utilities.salt_data(self::Utils.request_password)}"
     Utilities::Data.append_data(
-      { username.to_sym => { username: username, password: password } }, Utilities.user_db
+      { username.to_sym => { username: username, password: password } }, Utilities.user_db_link
     )
     puts 'You are now registered.'
   rescue UserExists => e
@@ -66,12 +74,17 @@ module Membership
     retry
   end
 
+  # prob should be elsewhere
   def self.setup_db
-    # Check files exist, else create
-    # Must be a cleaner way
-    Dir.mkdir('../../cache') unless Dir.exist?('../../cache')
-    Dir.mkdir('../../cache/place_holder_db') unless Dir.exist?('../../cache/place_holder_db')
-    File.new('../../cache/place_holder_db/users.json', 'w') unless File.exist?(Utilities.user_db)
+
+    Dir.mkdir('../cache') unless File.exist?('../cache')
+    Dir.mkdir('../cache/place_holder_db/')unless File.exist?('../cache/place_holder_db/')
+    unless File.exist?(Utilities.user_db_link)
+      file = File.new('../cache/place_holder_db/users.json', 'w')
+      file.puts('[]')
+      file.close
+    end
+    gets
   end
 
   # Provides behind the scenes utils to allow module to function
@@ -86,9 +99,7 @@ module Membership
       username
 
     rescue BadUsername => e
-      system 'clear'
-      puts e
-      gets
+      StandardError.let_user_retry(e)
       retry
     end
 
@@ -101,23 +112,17 @@ module Membership
       password
 
     rescue BadUsername => e
-      system 'clear'
-      puts e
-      gets
+      StandardError.let_user_retry(e)
       retry
     end
 
     def self.user_exists?(username)
-      Utilities::Data.lookup(Utilities.user_db, username)
+      Utilities::Data.lookup(Utilities.user_db_link, username)
     end
 
     def self.get_password(username)
-      Utilities::Data.lookup(Utilities.user_db, username, :password)
+      Utilities::Data.lookup(Utilities.user_db_link, username, :password)
     end
   end
 
 end
-
-Membership.setup_db
-Membership.authenticate_user('abc', '12345678', JSON.parse(File.read(Utilities.user_db)))
-Membership.register
