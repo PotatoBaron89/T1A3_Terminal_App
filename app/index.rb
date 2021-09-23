@@ -5,8 +5,9 @@ require_relative './../lib/modules/members'
 begin # SIGNIN
   Membership.setup_db
 
-  if SessionController.sign_in
-  puts 'Signed in'
+  is_authenticated, session = SessionController.sign_in
+  if is_authenticated
+    puts "Signed in as: #{session}"
   else
     puts 'test'
   end

@@ -51,8 +51,11 @@ module Membership
     username = self::Utils.request_username
     password = self::Utils.request_password
 
-    Membership.authenticate_user(username, password, Utilities.user_db_get)
-
+    if Membership.authenticate_user(username, password, Utilities.user_db_get)
+      [true, session = Session.new(username)]
+    else
+      [false, session = nil]
+    end
   end
 
   def self.logout
@@ -60,15 +63,23 @@ module Membership
   end
 
   def self.register
+    # Get User's Desired Username
     puts 'Create a new account.'
-    puts "User entered: #{username = self::Utils.request_username}"
+    username = self::Utils.request_username
+    # Check whether Username is already in use
     raise UserExists if self::Utils.user_exists?(username)
 
-    puts "User entered: #{password = Utilities.salt_data(self::Utils.request_password)}"
+    # Get User's Desired Password and Salt it, Utils.request handles PW Requirements.
+    password = Utilities.salt_data(self::Utils.request_password)
+
+    # Append data to user_db
     Utilities::Data.append_data(
       { username.to_sym => { username: username, password: password } }, Utilities.user_db_link
     )
     puts 'You are now registered.'
+
+    # Return Successful login and session information
+    [true, Session.new(username)]
   rescue UserExists => e
     StandardError.let_user_retry(e)
     retry
@@ -76,7 +87,7 @@ module Membership
 
   # prob should be elsewhere
   def self.setup_db
-
+    # Check that folder struct exists, create if not
     Dir.mkdir('../cache') unless File.exist?('../cache')
     Dir.mkdir('../cache/place_holder_db/')unless File.exist?('../cache/place_holder_db/')
     unless File.exist?(Utilities.user_db_link)
@@ -97,7 +108,6 @@ module Membership
       raise BadUsername, 'Invalid username... Minimum three characters. No special characters' if username.length < 3
 
       username
-
     rescue BadUsername => e
       StandardError.let_user_retry(e)
       retry
@@ -124,5 +134,4 @@ module Membership
       Utilities::Data.lookup(Utilities.user_db_link, username, :password)
     end
   end
-
 end

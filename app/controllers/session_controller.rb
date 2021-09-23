@@ -1,6 +1,7 @@
 require_relative('../views/login_form')
 require_relative '../../lib/exceptions/invalid_option'
 require_relative '../../lib/modules/members'
+require_relative '../../lib/modules/session'
 
 # Handles Session Management, Session required to enter main app
 module SessionController
@@ -20,8 +21,10 @@ module SessionController
 
     case res
     when 'login'
-      Membership.login
+      is_authenticated, session = Membership.login
+      [is_authenticated, session]
     when 'register'
+      # return [true, session = Session]
       Membership.register
     else
       puts 'That option is not implemented yet'

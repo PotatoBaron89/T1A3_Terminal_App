@@ -6,10 +6,13 @@
 # @tasks: Pull relevant information from DB (or pseudo db in our case)
 class Session
   attr_reader :name
-  def self.initialize(username)
+  def initialize(username)
     @username = username
   end
 
+  def to_s
+    @username
+  end
 
   def sign_out
     puts 'Placeholder sign-out'
