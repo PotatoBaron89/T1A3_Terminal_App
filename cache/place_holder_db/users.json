@@ -52,5 +52,11 @@
       "username": "dfafadsf",
       "password": "$2a$12$VGMOaNRtPVpOdUu6aycsb.w2nBz2kilsPRYWGzeXIQn5c5rMVuNoe"
     }
+  },
+  {
+    "sophie": {
+      "username": "sophie",
+      "password": "$2a$12$a2RgHsCPQXWsWShiM0H2huRqjlT1N/QMUo0STVxU1zeUxvbfqxFqC"
+    }
   }
 ]

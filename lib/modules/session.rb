@@ -6,11 +6,12 @@
 # @tasks: Pull relevant information from DB (or pseudo db in our case)
 class Session
   attr_reader :username
-  attr_accessor :is_authenticated
+  attr_accessor :is_authenticated, :dev_mode
 
   def initialize(username, is_authenticated = false)
     @username = username
     @is_authenticated = is_authenticated
+    @dev_mode = true
   end
 
   def to_s
@@ -18,7 +19,8 @@ class Session
   end
 
   def sign_out
-    puts 'Placeholder sign-out'
+    DisplayController.print_message(['You have successfully signed out.'])
+    @is_authenticated = false
   end
 end
 

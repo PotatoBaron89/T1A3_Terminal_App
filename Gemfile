@@ -10,6 +10,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'mutant-rspec'
   gem 'capybara'
+  gem 'prettier'
   gem 'rspec-core'
   gem 'rubocop', require: false
 end
@@ -22,3 +23,7 @@ gem "colorize", "~> 0.8.1"
 gem "tty-prompt", "~> 0.23.1"
 
 gem "tty-font", "~> 0.5.0"
+
+gem "tty-box", "~> 0.7.0"
+
+gem "dotenv", "~> 2.7"

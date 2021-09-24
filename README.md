@@ -1,6 +1,15 @@
-#Readme:
+# Readme:
+### Change Log: 0.03
+* Implemented an API lookup to a multilingual dictionary.  It is functional but not plugged into the application proper yet.
+* Added a simple splash screen, may try to make something better later.
+* Menus are now all working properly, dead options are coloured black until functionality is implemented.
+* Setup Dotenv for storing API keys, tempted to move session info into Dotenv, haven't decided if it is a good idea.
+* Began setting up json files handling lesson content.  Still undecided on the layout I want to go with.
 
-###Change Log: 0.02
+**Notes**
+* New dependencies: tty-table, dotenv
+
+### Change Log: 0.02
 * Greatly simplified codebase for logging in
 * Removed many now unnecessary files
   * removed default_user_opts.rb

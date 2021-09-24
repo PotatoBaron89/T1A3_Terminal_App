@@ -1,0 +1,25 @@
+[
+  ["I","a"],
+  ["He","a"],
+  ["She","a"],
+  ["You","a"],
+  ["They","a"],
+  ["are","a"],
+  ["to","a"],
+  [
+    "English": "good",
+    "French": {
+      "masc": "bon" ,
+      "fem": "bonne"
+  }
+
+  ],
+  ["bad","a"],
+  ["happy","a"],
+  ["sad","a"],
+  ["this","a"],
+  ["that","a"],
+  ["that","a"]
+
+]
+

@@ -14,9 +14,10 @@ require_relative 'user_controller'
 # Documentation Needed
 module DisplayController
   include UserController
+  @prompt = TTY::Prompt.new
 
   def self.display_splash
-    puts 'placeholder splash screen from DisplayController'
+    TTY::Box.frame("Apprenons-en Français!", align: :center, padding: 3, width: 30, height: 10, title: {top_left: "By Sam O'Donnell", bottom_right: "v0.03"})
   end
 
   def self.print_message(msgs, pause: true)
@@ -41,34 +42,36 @@ module DisplayController
 
   def self.sign_in(msg = 'What would you like to do')
     system 'clear'
-    TTY::Prompt.new.select(msg) do |menu|
+
+    @prompt.select(msg) do |menu|
       menu.choice 'Login', USER[:return_new_session]
       menu.choice 'Register', USER[:register_plus_new_session]
-      menu.choice 'Help'
-      menu.choice 'Close'
+      menu.choice 'Close', -> { exit(true) }
+    end
+
+  end
+
+  def self.main_menu(session, msg = 'Main Menu')
+    system 'clear'
+    TTY::Prompt.new.select(msg) do |menu|
+
+      menu.choice 'Flash Cards', -> { flash_card_menu(session) }
+      menu.choice 'Study'.colorize(:black)
+      menu.choice 'Profile'.colorize(:black)
+      menu.choice 'Settings'.colorize(:black)
+      menu.choice 'About'.colorize(:black)
+      menu.choice 'Logout', -> { session.sign_out }
+      menu.choice 'Close', -> { exit(true) }
     end
   end
 
-  def self.main_menu(msg = 'Main Menu'.colorize(:yellow))
+  def self.flash_card_menu(session, msg = "Select a list to study")
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
-      menu.choice 'Flash Cards'
-      menu.choice 'Study'
-      menu.choice 'Profile'
-      menu.choice 'Settings'
-      menu.choice 'About'
-      menu.choice 'Logout'
-      menu.choice 'Close'
-    end
-  end
-
-  def self.flash_card_menu(msg = "Welcome #{session.username}, please select a list to study")
-    system 'clear'
-    TTY::Prompt.new.select(msg) do |menu|
-      menu.choice 'Greetings and Introductions'
-      menu.choice 'Verbs'
-      menu.choice 'Adjectives'
-      menu.choice 'Back'
+      menu.choice 'Greetings and Introductions'.colorize(:black)
+      menu.choice 'Verbs'.colorize(:black)
+      menu.choice 'Adjectives'.colorize(:black)
+      menu.choice 'Back', -> { main_menu(session) }
     end
   end
 
