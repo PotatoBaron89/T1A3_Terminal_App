@@ -22,16 +22,14 @@ module Membership
   include BCrypt
 
   def self.authenticate_user(username, password, list_of_users)
-    puts 'Authenticating'
+    system 'clear'
 
     list_of_users.each do |user_info|
       next unless user_info[username.to_s]['username'] == username &&
                   verify_hash_digest(user_info[username.to_s]['password']) == password
 
-      puts 'Successfully logged in'
-      gets
       return true
-    rescue NoMethodError => e
+    rescue NoMethodError
       # log error
       puts 'Incorrect login information required'
       return false
@@ -48,15 +46,15 @@ module Membership
   end
 
   def self.login
+    system 'clear'
+    puts 'Login to your account.'
     username = self::Utils.request_username
     password = self::Utils.request_password
 
     if Membership.authenticate_user(username, password, Utilities.user_db_get)
-      session = Session.new(username)
-      session.is_authenticated = true
-      [true, session]
+      Session.new(username, true)
     else
-      [false, nil]
+      Session.new('guest', false)
     end
   end
 
@@ -65,6 +63,7 @@ module Membership
   end
 
   def self.register
+    system 'clear'
     # Get User's Desired Username
     puts 'Create a new account.'
     username = self::Utils.request_username
@@ -81,7 +80,8 @@ module Membership
     puts 'You are now registered.'
 
     # Return Successful login and session information
-    [true, Session.new(username)]
+    Session.new(username, true)
+
   rescue UserExists => e
     StandardError.let_user_retry(e)
     retry
@@ -103,7 +103,6 @@ module Membership
   # Provides behind the scenes utils to allow module to function
   module Utils
     def self.request_username
-      system 'clear'
       print 'Username: '
 
       username = gets.chomp
@@ -116,7 +115,6 @@ module Membership
     end
 
     def self.request_password
-      system 'clear'
       print 'Password: '
       password = Utilities.hide_req_input
       raise BadUsername, "Invalid password. Can't be less than 6 characters" if password.length < 6

@@ -9,9 +9,12 @@ rescue LoadError
 end
 
 require_relative '../../lib/modules/members'
+require_relative 'user_controller'
 
 # Documentation Needed
 module DisplayController
+  include UserController
+
   def self.display_splash
     puts 'placeholder splash screen from DisplayController'
   end
@@ -29,13 +32,46 @@ module DisplayController
     puts "Res: #{res}"
   end
 
+  def self.yes_no(msg)
+    TTY::Prompt.new.select(msg) do |menu|
+      menu.choice 'yes', true
+      menu.choice 'no', false
+    end
+  end
+
   def self.sign_in(msg = 'What would you like to do')
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
-      menu.choice 'Login'
-      menu.choice 'Register'
+      menu.choice 'Login', USER[:return_new_session]
+      menu.choice 'Register', USER[:register_plus_new_session]
       menu.choice 'Help'
       menu.choice 'Close'
     end
   end
+
+  def self.main_menu(msg = 'Main Menu'.colorize(:yellow))
+    system 'clear'
+    TTY::Prompt.new.select(msg) do |menu|
+      menu.choice 'Flash Cards'
+      menu.choice 'Study'
+      menu.choice 'Profile'
+      menu.choice 'Settings'
+      menu.choice 'About'
+      menu.choice 'Logout'
+      menu.choice 'Close'
+    end
+  end
+
+  def self.flash_card_menu(msg = "Welcome #{session.username}, please select a list to study")
+    system 'clear'
+    TTY::Prompt.new.select(msg) do |menu|
+      menu.choice 'Greetings and Introductions'
+      menu.choice 'Verbs'
+      menu.choice 'Adjectives'
+      menu.choice 'Back'
+    end
+  end
+
+
+
 end
