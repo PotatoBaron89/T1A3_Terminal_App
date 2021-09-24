@@ -16,5 +16,11 @@
       "username": "testaccount",
       "password": "$2a$12$AUiQ9rpXboPTA9xgqAcdXOemEqvWNshY09Ap3jQ5Qqfr6Cdf.f2gy"
     }
+  },
+  {
+    "test": {
+      "username": "test",
+      "password": "$2a$12$GU6ozlszo4QfYIPNzuogHe9Vm3Uq/nyOC.3.kInlLwTcm8xGj8XXG"
+    }
   }
 ]

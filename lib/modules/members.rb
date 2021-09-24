@@ -52,9 +52,11 @@ module Membership
     password = self::Utils.request_password
 
     if Membership.authenticate_user(username, password, Utilities.user_db_get)
-      [true, session = Session.new(username)]
+      session = Session.new(username)
+      session.is_authenticated = true
+      [true, session]
     else
-      [false, session = nil]
+      [false, nil]
     end
   end
 
