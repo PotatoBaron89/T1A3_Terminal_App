@@ -1,6 +1,4 @@
 
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 O
 spec/unit/logic_wrapper_spec.rb,a\b\ab8160a2426be9ed32ac4b26c462521eed0b22cf
 I
