@@ -1,5 +1,6 @@
 require 'bcrypt'
 require 'json'
+
 # require_relative '../../cache/place_holder_db/users.json'
 
 # @Description
@@ -12,6 +13,8 @@ module Utilities
   def self.user_db_get
     JSON.parse(File.read(self.user_db_link), { symbolize: true })
   end
+
+
 
   def self.hide_req_input
     system 'stty -echo'

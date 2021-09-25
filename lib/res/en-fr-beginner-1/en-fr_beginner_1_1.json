@@ -1,0 +1,92 @@
+[
+  [
+    { "Lesson Info":  {
+      "Title": "1. It is / c'est" ,
+      "Description": "In this lesson we will learn how to use c'est (it is) and a handful of descriptive adjectives."
+    }},
+    [
+      {"good": [ {"type": ":adj :desc"}, {"translation": ["bon" , "bonne"]}]},
+      {"bad": [ {"type": ":adj :desc"}, {"translation": ["mauvais" , "mauvaise"]}]},
+      {"blue": [ {"type": ":adj :desc"}, {"translation": ["bleu" , "bleue"]}]},
+      {"red": [ {"type": ":adj :desc"}, {"translation": ["rogue" , "mauvaise"]}]},
+      {"green": [ {"type": ":adj :desc"}, {"translation": ["vert"]}]}
+    ],
+    [
+      { "It is [adj]":  "c'est [adj]"}
+    ]
+  ],
+  [
+    [
+      { "Lesson Info":  {
+        "Title": "2. It isn't / Ce n'est pas" ,
+        "Description": "In this lesson we will learn how to use Ce n'est pas (it isn't)."
+      }},
+      {"yellow": [ {"type": ":adj :desc"}, {"translation": ["jaune"]}]},
+      {"white": [ {"type": ":adj :desc"}, {"translation": ["blanc" , "blanche"]}]},
+      {"black": [ {"type": ":adj :desc"}, {"translation": ["noir" , "noire"]}]}
+    ],
+    [
+      { "It isn't good":  "Ce n'est pas [:adj :desc]"}
+    ]
+  ],
+  [
+    [
+      { "Lesson Info":  {
+        "Title": "3. It isn't a / Ce n'est pas un" ,
+        "Description": "In this lesson we will learn how to use un/une (a). Eg It is a blue car."
+      }},
+      {"car": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]},
+      {"bus": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]},
+      {"truck": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]},
+      {"motorbike": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]},
+      {"bike": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]}
+    ],
+    [
+      { "It is a car":  "Ce n'est pas [:noun :c]"},
+      { "It isn't a car":  "Ce n'est pas [:noun :c]"}
+    ]
+  ],
+  [
+    { "Lesson Info":  {
+      "Title": "4. It is not a / Ce n'est pas " ,
+      "Description": "In this lesson we will pair descriptive adjectives with common nouns using what we have learnt so far."
+    }},
+    [
+        {"big": [ {"type": ":adj :desc"}, {"translation": ["gros" , "grosse"]}]},
+        {"small": [ {"type": ":adj :desc"}, {"translation": ["petit" , "petite"]}]},
+        {"old": [ {"type": ":adj :desc"}, {"translation": ["ancien" , "ancienne"]}]},
+        {"tree": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]}
+    ],
+    [
+      { "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun]"},
+      { "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun] [:adj]"},
+      { "It is not a [:adj] [:noun :c]":  "Ce n'est pas [:un] [:noun] [:adj]"},
+      { "It is not a [:adj] [:noun :c]":  "Ce n'est pas [:un] [:noun] [:adj]"}
+    ]
+  ],
+  [
+    [
+        {"good": [ {"type": ":adj :desc"}, {"translation": ["bon" , "bonne"]}]}
+    ],
+    [
+      {
+        "It is not a [:noun :c], but it is a [:noun :c]":
+        "Ce n'est pas [:un] [:noun :c] mais c'est [:un] [:noun :c]"
+      },
+      {
+        "It is not [:adj], but it is [:adj]":
+        "Ce n'est pas [:adj] mais c'est [:adj]"
+      },
+      {
+        "It is not [:adj], but it is a [:noun :c]":
+        "Ce n'est pas [:adj] mais c'est [:un] [:noun :c]"
+      },
+      {
+        "It is a not a [:adj :desc] [:noun :c], but it is a [:adj :desc] [:noun :c]":
+        "Ce n'est pas [:un] [:noun :c] [:adj :desc] mais c'est [:un] [:noun :c] [:adj :desc]"
+      },
+      { "It is not a [:adj :desc] [:noun :c]":  "Ce n'est pas [:un] [:noun :c] [:adj :desc]"},
+      { "It is not a [:adj :desc] [:noun :c]":  "Ce n'est pas [:un] [:noun :c] [:adj :desc]"}
+    ]
+  ]
+]

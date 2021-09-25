@@ -11,6 +11,7 @@ session = Session.new('Guest', false)
 
 #    ---  SIGN-IN
 
+
 until session.is_authenticated
   puts DisplayController.display_splash
   gets

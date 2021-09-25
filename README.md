@@ -1,4 +1,104 @@
 # Readme:
+
+### Change Log: 0.04
+* Puzzled out and implemented a content system that should work well and allow for reasonably dynamic content that is also structured enough to not leave learner's lost or out of their depth.  In early prototype stages but hopeful.  Content structure described below.
+* Removed outdated lessons to be replaced with the new structure.
+
+**Todo**
+* Add a system to cache vocab the user has covered.  Have yet to lock in how I want this data to be structured and organised.
+* Create a system to parse strings and replace relevent sections (eg [:noun :c]) with words in the user's study material.
+* Create a system to parse json lessons and store relevant information in system memory.
+  * Probably two separate files
+    * User profile info including all relevant user info and vocab (no further information on the words)
+    * dict.json, json with hash of each entry, key always matches the word
+  * to find appropriate lists, would need to parse every word, map matching data to system memory.
+  * New vocab would be << to dict.json and appended to system memory cache (instead of appending to dict then re-parsing and re-initializing them into system memory)
+
+
+**Content Structure**
+
+To facilitate dynamic content words have been ascribed necessary information.
+Type: :type :sub-type,
+
+  Legend:
+
+      :un           parse and replace with 'un/une' according to gender of subject
+
+      :noun :c      common noun
+      :noun :p      noun proper
+      :noun :con    noun concrete
+      :noun :a      noun abstract
+      :noun :col    noun collective
+
+      :adj :comp      adjective comparative
+      :adj :super     adjective superlative
+      :adj :pred      adjective predicate
+      :adj :compound  adjective compound
+      :adj :pos       adjective possessive
+      :adj :dem       adjective demonstrative
+      :adj :proper    adjective proper
+      :adj :part      adjective participial 
+      :adj :lim       adjective limiting
+      :adj :desc      adjective descriptive
+      :adj :i         adjective interrogative
+      :adj :adj       adjective attributive
+      :adj :dist      adjective distributive
+
+More will be added in the future, documentation will be updated accordingly.
+
+```
+[
+  [  #Lesson block
+      { Lesson Info: 
+        { 
+          Title: This is a title,
+          Description: This is a description
+        }
+      },
+      [   # Vocab Block
+          {"good": [ { "type": ":adj :desc" },
+                      { "translation": ["bon", "bonne"] },
+                      { "gender": "masculine" }
+                    ]
+          }
+      ],
+      [   # sentence structure to practice this lesson
+          { 
+            "It is not [:adj], but it is [:adj]":
+            "Ce n'est pas [:adj] mais c'est [:adj]" 
+          },
+          { 
+            "It is not [:adj], but it is a [:noun :c]":
+            "Ce n'est pas [:adj] mais c'est [:un] [:noun :c]" 
+          }
+      ]
+  ],
+  [     # next lesson Block
+      ...
+  ]
+]
+```
+
+**Dev Notes**
+
+* Think I finally have a grasp on how to order and relate information in an 
+* Each lesson has associated vocab, this vocab will be added to the users vocab list automatically.
+* Definitions will be added to words on different variations. E.G. house can be a verb and a noun etc.  The structure above allows us to make sure we only pull in appropriate words that are symantically correct.
+* Algorithm will heavily favour placing in new words that the user hasn't had much exposure too.
+* Algorithm will some what heavily favour words that are 'stale' to the user (hasn't seen much recently), or that the user has a low 'rating' with, eg if they have trouble remembering a particular word.
+* Considering adding an option to allow more words of the same type to be fed in if the users 'rating' for all matching vocab is very high.
+
+
+* **Format** will initially just be flash cards. Other methods on the backlog include:
+  * Single word
+    * Multiple-choice
+    * Written
+  * Sentences
+    * Multiple-choice
+    * Written (might be too much)
+    * Place words in the correct order
+
+
 ### Change Log: 0.03
 * Implemented an API lookup to a multilingual dictionary.  It is functional but not plugged into the application proper yet.
 * Added a simple splash screen, may try to make something better later.

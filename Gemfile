@@ -27,3 +27,4 @@ gem "tty-font", "~> 0.5.0"
 gem "tty-box", "~> 0.7.0"
 
 gem "dotenv", "~> 2.7"
+
