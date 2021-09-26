@@ -21,7 +21,6 @@ module Utilities
   # should refactor with user_db to prevent redundancy
   # Returns a parsed json file
   def self.load_json(file)
-    puts "FIle name: #{file}"
     return JSON.load(File.open(file), { symbolize: true }) if file.is_a? String
 
     if file.is_a? Array

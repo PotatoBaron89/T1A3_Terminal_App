@@ -19,7 +19,9 @@ module DisplayController
 
   def self.display_splash
     system 'clear'
-    TTY::Box.frame('Apprenons-en Français!', align: :center, padding: 3, width: 30, height: 10, title: {top_left: "By Sam O'Donnell", bottom_right: 'v0.03'})
+    TTY::Box.frame('Apprenons-en Français!'.colorize(:light_green), align: :center, padding: 3, width: 30,
+                   height: 10, title: {top_left: "By Sam O'Donnell".colorize(:yellow),
+                                       bottom_right: 'v0.05'.colorize(:yellow) })
   end
 
   def self.print_message(msgs, pause: true)
@@ -46,15 +48,15 @@ module DisplayController
     system 'clear'
 
     @prompt.select(msg) do |menu|
-      menu.choice 'Login', USER[:return_new_session]
       menu.choice 'Dev Mode', -> { Session.new('sam', true) }
+      menu.choice 'Login', USER[:return_new_session]
       menu.choice 'Register', USER[:register_plus_new_session]
       menu.choice 'Close', -> { exit(true) }
     end
 
   end
 
-  def self.main_menu(session, msg = 'Main Menu')
+  def self.main_menu(session, msg = 'Main Menu'.colorize(:light_green))
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
       menu.choice 'Study', -> { study_menu(session) }
@@ -83,8 +85,15 @@ module DisplayController
       Curriculum.lessons.each_with_index do |lesson, i|
         menu.choice "#{lesson.difficulty} :  #{lesson.title}", -> { DISPLAY[:lesson_info].call(i, session) }
       end
-        menu.choice 'Back', -> { main_menu(session) }
+      menu.choice 'Back', -> { main_menu(session) }
     end
+  end
+
+  def self.prompt_flash_card(word, second_word, randomise_prompt = true)
+    i = Random.rand(2) if randomise_prompt
+    word, second_word = second_word, word if i == 1
+    DisplayController.print_message([word, second_word])
+    gets
   end
 end
 

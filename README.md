@@ -1,5 +1,10 @@
 # Readme:
 
+### Change Log: 0.06
+* Added rudimentary flash card functionality and necessary methods to pull vocab lists from lessons.
+  * User interface needs refinement
+  * Need to add session stats to keep track of user progress.
+
 ### Change Log: 0.05
 * Fixed flaws with lesson json files, inconsistent formatting.
 * Have yet to update style guide for lesson content.
