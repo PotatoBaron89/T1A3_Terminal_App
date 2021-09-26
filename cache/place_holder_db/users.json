@@ -6,6 +6,12 @@
     }
   },
   {
+    "sam": {
+      "username": "Developer",
+      "password": "$2a$12$Syxmb9ymmqjQR.jH.OTq8.xApMBiteHwGaqX7Z.3aicJs4oEFvjji"
+    }
+  },
+  {
     "josephine": {
       "username": "josephine",
       "password": "$2a$12$g1YBLBWWhQA4lViSm49vGOHqjw.N7UTDzvzdjYcRyZRvonLYXPw2."

@@ -1,5 +1,44 @@
 # Readme:
 
+### Change Log: 0.05
+* Fixed flaws with lesson json files, inconsistent formatting.
+* Have yet to update style guide for lesson content.
+* On load, app will automatically find any json file and parse it (assuming it is a valid lesson.json).  Error handling NOT yet added.
+  * Cache metadata from each lesson, core content will be loaded upon request to save system memory.
+* Added Study Menu and **Flashcard menu**.  Flashcard menu is entirely placeholder, **Study** menu list all lessons found.
+  * Selecting a lesson will display additional information about the course and its subject matter.
+  * Does NOT yet lead to a way to study, that's next.
+
+
+**Dev Notes**
+
+* Added Curriculum singleton which handles lesson metadata.
+* Added Lesson class which initializes with lesson metadata.
+  * Have yet to add a method to load course material.
+* Need to add a lot of error handling and figure out how to effectively test the code soon, but first goal is to get a working product out.
+
+### Change Log: 0.04
+* Added more information to lesson.json format, in the form of module information.  The rest is the same.
+```
+[
+  {
+    "Module": "It's / c'est" ,
+    "Difficulty": "Beginner" ,
+    "Author": "Sam O'Donnell" ,
+    "Last Updated": "26/09/2021"
+  },
+  [  #Lesson block
+      { Lesson Info: 
+        { 
+          Title: This is a title,
+          Description: This is a description
+        }
+  ...
+        ```
+
+
+
+
 ### Change Log: 0.04
 * Puzzled out and implemented a content system that should work well and allow for reasonably dynamic content that is also structured enough to not leave learner's lost or out of their depth.  In early prototype stages but hopeful.  Content structure described below.
 * Removed outdated lessons to be replaced with the new structure.

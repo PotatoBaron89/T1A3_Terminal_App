@@ -8,7 +8,7 @@ class Session
   attr_reader :username
   attr_accessor :is_authenticated, :dev_mode
 
-  def initialize(username, is_authenticated = false)
+  def initialize(username, is_authenticated = false, dev: false)
     @username = username
     @is_authenticated = is_authenticated
     @dev_mode = true

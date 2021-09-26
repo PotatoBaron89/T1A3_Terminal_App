@@ -10,6 +10,7 @@ end
 
 require_relative '../../lib/modules/members'
 require_relative 'user_controller'
+require_relative 'display_controller_procs'
 
 # Documentation Needed
 module DisplayController
@@ -17,7 +18,8 @@ module DisplayController
   @prompt = TTY::Prompt.new
 
   def self.display_splash
-    TTY::Box.frame("Apprenons-en Français!", align: :center, padding: 3, width: 30, height: 10, title: {top_left: "By Sam O'Donnell", bottom_right: "v0.03"})
+    system 'clear'
+    TTY::Box.frame('Apprenons-en Français!', align: :center, padding: 3, width: 30, height: 10, title: {top_left: "By Sam O'Donnell", bottom_right: 'v0.03'})
   end
 
   def self.print_message(msgs, pause: true)
@@ -45,6 +47,7 @@ module DisplayController
 
     @prompt.select(msg) do |menu|
       menu.choice 'Login', USER[:return_new_session]
+      menu.choice 'Dev Mode', -> { Session.new('sam', true) }
       menu.choice 'Register', USER[:register_plus_new_session]
       menu.choice 'Close', -> { exit(true) }
     end
@@ -54,9 +57,8 @@ module DisplayController
   def self.main_menu(session, msg = 'Main Menu')
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
-
+      menu.choice 'Study', -> { study_menu(session) }
       menu.choice 'Flash Cards', -> { flash_card_menu(session) }
-      menu.choice 'Study'.colorize(:black)
       menu.choice 'Profile'.colorize(:black)
       menu.choice 'Settings'.colorize(:black)
       menu.choice 'About'.colorize(:black)
@@ -65,7 +67,7 @@ module DisplayController
     end
   end
 
-  def self.flash_card_menu(session, msg = "Select a list to study")
+  def self.flash_card_menu(session, msg = 'Select a list to study')
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
       menu.choice 'Greetings and Introductions'.colorize(:black)
@@ -75,6 +77,15 @@ module DisplayController
     end
   end
 
-
-
+  def self.study_menu(session, msg = 'Select a module to study')
+    system 'clear'
+    TTY::Prompt.new.select(msg) do |menu|
+      Curriculum.lessons.each_with_index do |lesson, i|
+        menu.choice "#{lesson.difficulty} :  #{lesson.title}", -> { DISPLAY[:lesson_info].call(i, session) }
+      end
+        menu.choice 'Back', -> { main_menu(session) }
+    end
+  end
 end
+
+

@@ -10,11 +10,24 @@ module Utilities
     '../cache/place_holder_db/users.json'
   end
 
-  def self.user_db_get
-    JSON.parse(File.read(self.user_db_link), { symbolize: true })
+  def self.get_lesson_links
+    Dir['../lib/res/fr-lessons/*.json']
   end
 
+  def self.user_db_get
+    JSON.parse(File.read(user_db_link), { symbolize: true })
+  end
 
+  # should refactor with user_db to prevent redundancy
+  # Returns a parsed json file
+  def self.load_json(file)
+    puts "FIle name: #{file}"
+    return JSON.load(File.open(file), { symbolize: true }) if file.is_a? String
+
+    if file.is_a? Array
+      file.each { |f| JSON.load(File.open(f), { symbolize: true })}
+    end
+  end
 
   def self.hide_req_input
     system 'stty -echo'
