@@ -1,5 +1,22 @@
 # Readme:
 
+### Change Log: 0.07
+* Added **strings** gem, used to align, truncate and wrap strings.  Needed due to the length of some strings that come with a language learning application.
+* Added **columnize** to use to help tidy up the interface.
+* Added more or less fully featured flash cards.  For now, they pull the vocab from the associated lessons only, and do not take into account what the user has already learnt.
+  * This is high on the todo list, adding a system to account for what the user has learnt and sub in other words.
+* Now have the functionality to pull any words needed and store them in short term memory
+  * this can be achieved with:
+    * words_fr << returns object, `{ type: [:noun], translation: ['masc', 'fem'], gender: 'masculine'`
+    * words_en << returns string containing the English word
+
+** Dev Notes **
+
+* Still need to refactor at some point but it's low on the list.
+* Need to make further passes to tidy the interface but it's not looking too bad.
+* More error handling is still on the backlog.
+
+
 ### Change Log: 0.06
 * Added rudimentary flash card functionality and necessary methods to pull vocab lists from lessons.
   * User interface needs refinement

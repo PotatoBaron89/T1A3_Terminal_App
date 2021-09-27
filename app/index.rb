@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 require 'colorize'
 require 'tty-box'
+
 require_relative './../lib/modules/members'
 require_relative 'controllers/display_controller'
 require_relative '../lib/modules/lesson'

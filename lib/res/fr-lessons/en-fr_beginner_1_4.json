@@ -1,21 +1,22 @@
 [
   {
-    "Module": "Describing basic objects" ,
-    "Difficulty": "Beginner" ,
+    "Module": "Super hard content" ,
+    "Difficulty": "Advanced" ,
     "Author": "Sam O'Donnell" ,
-    "Last Updated": "27/09/2021","Description": "This course is designed to teach you about the basics of refering to objects using it / it is.  In this course you will be introduced to a variety of basic objects and colours."
+    "Last Updated": "27/09/2021","Description": "This course is where it is at!"
   },
   [
     [
       { "Section Info":  {
-        "Title": "1. It's / c'est" ,
-        "Description": "In this lesson we will learn how to use c'est (it is) and a handful of descriptive adjectives."
+        "Title": "1. Super hard stuff 1" ,
+        "Description": "Oh no! This will be hard!"
       }},
       [
         {"good": [ {"type": ":adj :desc"}, {"translation": ["bon" , "bonne"]}, {"gender": "none"}]},
         {"bad": [ {"type": ":adj :desc"}, {"translation": ["mauvais" , "mauvaise"]}, {"gender": "none"}]},
         {"blue": [ {"type": ":adj :desc"}, {"translation": ["bleu" , "bleue"]}, {"gender": "none"}]},
         {"red": [ {"type": ":adj :desc"}, {"translation": ["rogue" , "mauvaise"]}, {"gender": "none"}]},
+        {"yellow": [ {"type": ":adj :desc"}, {"translation": ["jaune"]}, {"gender": "none"}]},
         {"green": [ {"type": ":adj :desc"}, {"translation": ["vert"]}, {"gender": "none"}]}
       ],
       [
@@ -24,11 +25,10 @@
     ],
     [
       { "Section Info":  {
-        "Title": "2. It isn't / Ce n'est pas" ,
-        "Description": "In this lesson we will learn how to use Ce n'est pas (it isn't)."
+        "Title": "2. Panic" ,
+        "Description": "And it doesn't get easier"
       }},
       [
-        {"yellow": [ {"type": ":adj :desc"}, {"translation": ["jaune"]}, {"gender": "none"}]},
         {"white": [ {"type": ":adj :desc"}, {"translation": ["blanc" , "blanche"]}, {"gender": "none"}]},
         {"black": [ {"type": ":adj :desc"}, {"translation": ["noir" , "noire"]}, {"gender": "none"}]}
       ],
@@ -38,8 +38,8 @@
     ],
     [
       { "Section Info":  {
-        "Title": "3. It isn't a / Ce n'est pas un" ,
-        "Description": "In this lesson we will learn how to use un/une (a). Eg It is a blue car."
+        "Title": "3. To to top!" ,
+        "Description": "Climb the mountain!"
       }},
       [
         {"car": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]},
@@ -55,8 +55,8 @@
     ],
     [
       { "Section Info":  {
-        "Title": "4. It is not a / Ce n'est pas " ,
-        "Description": "In this lesson we will pair descriptive adjectives with common nouns using what we have learnt so far."
+        "Title": "4. Almost there" ,
+        "Description": "It's the final leg of the race!"
       }},
       [
         {"big": [ {"type": ":adj :desc"}, {"translation": ["gros" , "grosse"]}, {"gender": "none"}]},

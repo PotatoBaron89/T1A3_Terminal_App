@@ -2,6 +2,7 @@
 
 begin
   require 'tty-prompt'
+  require 'columnize'
   require 'tty-font'
 rescue LoadError
   puts 'You appear to be missing dependencies. Try run:'
@@ -16,6 +17,10 @@ require_relative 'display_controller_procs'
 module DisplayController
   include UserController
   @prompt = TTY::Prompt.new
+
+  def card_width
+    return '                                      '
+  end
 
   def self.display_splash
     system 'clear'
@@ -90,10 +95,16 @@ module DisplayController
   end
 
   def self.prompt_flash_card(word, second_word, randomise_prompt = true)
+    word = word[0]
     i = Random.rand(2) if randomise_prompt
     word, second_word = second_word, word if i == 1
-    DisplayController.print_message([word, second_word])
+
+    puts DISPLAY[:create_card].call(word, 'Prompt')
     gets
+    system 'clear'
+    print DISPLAY[:create_card].call(second_word, 'Answer', word)
+    gets
+
   end
 end
 
