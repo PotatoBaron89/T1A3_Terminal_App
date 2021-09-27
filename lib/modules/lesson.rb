@@ -9,22 +9,29 @@ class Lesson
               :file_ref, :sys
 
   # sets up basic meta information, not core content
-  def initialize(json)
-    hash = Utilities.load_json(json)
+  def initialize(json_file_path)
+    hash = Utilities.load_json(json_file_path)
+    descriptions = ":Description"
+    mod = ":Module"
+
+
     super()
-    @title = hash[0]['Module']
-    @difficulty = hash[0]['Difficulty']
-    @author = hash[0]['Author']
-    @updated = hash[0]['Last Updated']
-    @desc = hash[0]['Description']
+    @title = hash[mod][":Title"]
+    @difficulty = hash[mod][":Difficulty"]
+
+    @author = hash[mod][":Author"]
+    @updated = hash[mod][":Last Updated"]
+    @desc = hash[mod][descriptions]
     @section_titles = []
     @section_descriptions = []
-    @file_ref = json
+    @file_ref = json_file_path
+    # alias to ContentController module
     @sys = ContentController
 
-    hash[1].each do |section|
-      @section_titles.push section[0]['Section Info']['Title'] ||= []
-      @section_descriptions.push section[0]['Section Info']['Description'] ||= []
+
+    hash[":Lessons"].each do |section|
+      @section_titles.push section[":LessonTitle"] ||= []
+      @section_descriptions.push section[descriptions] ||= []
     end
   end
 
@@ -32,13 +39,15 @@ class Lesson
   # WIP, currently just handles flashcards
   # Load the full lesson data
   def load_lesson(sect_index)
+    lessons = ":Lessons"
     hash = Utilities.load_json(@file_ref)
-    vocab = hash[1][sect_index][1]
+    vocab = hash[lessons][sect_index][":Vocab"]
+    description = hash[lessons][sect_index][":Description"]
+    questions = hash[lessons][sect_index][":Sentences"]
 
-    questions = hash[1][sect_index][2]
-    description = hash[1][sect_index][0]
     words_en = sys::CACHE[:words_en].call(vocab)
     french_words = sys::CACHE[:words_fr].call(vocab)
+
     return [description, words_en, french_words, questions]
   end
 

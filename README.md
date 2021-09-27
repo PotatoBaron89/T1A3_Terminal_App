@@ -1,5 +1,58 @@
 # Readme:
 
+### Change Log: 0.08
+* Added system for logging users learnt words and storing them in local.
+* Minor changes to flash cards presentation
+* Updated Splash screen
+* Fixed performance issues related to recursvely opening and retreiving lesson information.
+* Very heavy refactor of lesson structure.  New style makes it far more human readable when accessing necessary sections than the old mess.
+    * File structure is far easier to understand now, and thus more maintanable.
+    * Removed unnecessary structure from the json files.
+    * Reworked the application to handle these changes.
+
+**Dev Notes**
+* Have an issue where keys are being stored as strings despite my attempts to retreive them as symbols.  It is on the backburner for now.
+
+**New Lesson Structure For JSON**
+
+```
+{
+  ":Module": {
+    ":Title": "Template" ,
+    ":Difficulty": "Beginner",
+    ":Author": "Sam O'Donnell",
+    ":Last Updated": "27/09/2021",
+    ":Description": "Template Lesson File."
+  },
+  ":Lessons" : [
+    {
+      ":LessonTitle": "1. It's / c'est" ,
+      ":Description": "Template Description" ,
+      ":Vocab":
+      [
+        {"good": [ {"type": ":adj :desc"}, {"translation": ["bon" , "bonne"]}, {"gender": "none"}]},
+        {"bad": [ {"type": ":adj :desc"}, {"translation": ["mauvais" , "mauvaise"]}, {"gender": "none"}]}
+      ],
+      ":Sentences": [
+        { "It is [adj]":  "c'est [adj]"}
+      ]
+    },
+
+    {
+      ":LessonTitle": "2. Template 2 Lesson" ,
+      ":Description": "Placeholder" ,
+      ":Vocab":
+      [
+        {"yellow": [ {"type": ":adj :desc"}, {"translation": ["jaune"]}, {"gender": "none"}]},
+        {"white": [ {"type": ":adj :desc"}, {"translation": ["blanc" , "blanche"]}, {"gender": "none"}]},
+        {"black": [ {"type": ":adj :desc"}, {"translation": ["noir" , "noire"]}, {"gender": "none"}]}
+      ],
+      ":Sentences": [
+        { "It isn't [:adj :desc]":  "Ce n'est pas [:adj :desc]"}
+      ]
+    }
+```
+
 ### Change Log: 0.07
 * Added **strings** gem, used to align, truncate and wrap strings.  Needed due to the length of some strings that come with a language learning application.
 * Added **columnize** to use to help tidy up the interface.

@@ -64,5 +64,23 @@
       "username": "sophie",
       "password": "$2a$12$a2RgHsCPQXWsWShiM0H2huRqjlT1N/QMUo0STVxU1zeUxvbfqxFqC"
     }
+  },
+  {
+    "Josephine": {
+      "username": "Josephine",
+      "password": "$2a$12$Tu8LFL05AsvqrNrwyHqTOOEZxKwmYt90qszqgfxc/Ku2TqvxOB.au"
+    }
+  },
+  {
+    "bobby": {
+      "username": "bobby",
+      "password": "$2a$12$xefRaR9rPbPrw.TpGKc6suihhGFYz5SeHptSHWEK1AM5ZnnoTQPYO"
+    }
+  },
+  {
+    "ababadf": {
+      "username": "ababadf",
+      "password": "$2a$12$aKrVviWqOtDpoRfDjF2II.nVKPRBCHnBEOeC2gVU3CC0cwgwEDyFK"
+    }
   }
 ]

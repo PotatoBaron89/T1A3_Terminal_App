@@ -1,0 +1,72 @@
+{
+  ":Module": {
+    ":Title": "Template" ,
+    ":Difficulty": "Beginner",
+    ":Author": "Sam O'Donnell",
+    ":Last Updated": "27/09/2021",
+    ":Description": "Template Lesson File."
+  },
+  ":Lessons" : [
+    {
+      ":LessonTitle": "1. It's / c'est" ,
+      ":Description": "Template Description" ,
+      ":Vocab":
+      [
+        {"good": [ {"type": ":adj :desc"}, {"translation": ["bon" , "bonne"]}, {"gender": "none"}]},
+        {"bad": [ {"type": ":adj :desc"}, {"translation": ["mauvais" , "mauvaise"]}, {"gender": "none"}]}
+      ],
+      ":Sentences": [
+        { "It is [adj]":  "c'est [adj]"}
+      ]
+    },
+
+    {
+      ":LessonTitle": "2. Template 2 Lesson" ,
+      ":Description": "Placeholder" ,
+      ":Vocab":
+      [
+        {"yellow": [ {"type": ":adj :desc"}, {"translation": ["jaune"]}, {"gender": "none"}]},
+        {"white": [ {"type": ":adj :desc"}, {"translation": ["blanc" , "blanche"]}, {"gender": "none"}]},
+        {"black": [ {"type": ":adj :desc"}, {"translation": ["noir" , "noire"]}, {"gender": "none"}]}
+      ],
+      ":Sentences": [
+        { "It isn't [:adj :desc]":  "Ce n'est pas [:adj :desc]"}
+      ]
+    },
+
+    {
+      ":LessonTitle": "3. It isn't a / Ce n'est pas un" ,
+      ":Description": "In this lesson we will learn how to use un/une." ,
+      ":Vocab":
+      [
+        {"car": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}]},
+        {"bus": [ {"type": ":noun :c"}, {"translation": ["french bus"]}, {"gender": "feminine"}]},
+        {"truck": [ {"type": ":noun :c"}, {"translation": ["frenchtruck"]}, {"gender": "feminine"}]},
+        {"motorbike": [ {"type": ":noun :c"}, {"translation": ["frenchmotorbiek"]}, {"gender": "feminine"}]},
+        {"bike": [ {"type": ":noun :c"}, {"translation": ["frenchbike"]}, {"gender": "feminine"}]}
+      ],
+      ":Sentences": [
+        { "It is a [:noun :c]":  "Ce n'est pas [:noun :c]"},
+        { "It isn't a [:noun :c]":  "Ce n'est pas [:noun :c]"}
+      ]
+    },
+
+    {
+      ":LessonTitle": "4. It is not a / Ce n'est pas" ,
+      ":Description": "In this lesson we will learn how to use c'est (it is)" ,
+      ":Vocab":
+      [
+        {"big": [ {"type": ":adj :desc"}, {"translation": ["gros" , "grosse"]}, {"gender": "none"}]},
+        {"small": [ {"type": ":adj :desc"}, {"translation": ["petit" , "petite"]}, {"gender": "none"}]},
+        {"old": [ {"type": ":adj :desc"}, {"translation": ["ancien" , "ancienne"]}, {"gender": "none"}]},
+        {"tree": [ {"type": ":noun :c"}, {"translation": ["voiture"]}, {"gender": "feminine"}, {"gender": "none"}]}
+      ],
+      ":Sentences": [
+        { "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun]"},
+        { "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun] [:adj]"},
+        { "It is not a [:adj] [:noun :c]":  "Ce n'est pas [:un] [:noun] [:adj]"},
+        { "It is not a [:adj] [:noun :c]":  "Ce n'est pas [:un] [:noun] [:adj]"}
+      ]
+    }
+  ]
+}

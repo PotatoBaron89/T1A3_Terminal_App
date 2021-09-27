@@ -15,16 +15,16 @@ module Utilities
   end
 
   def self.user_db_get
-    JSON.parse(File.read(user_db_link), { symbolize: true })
+    JSON.parse(File.read(user_db_link), { symbolize_names: true })
   end
 
   # should refactor with user_db to prevent redundancy
   # Returns a parsed json file
   def self.load_json(file)
-    return JSON.load(File.open(file), { symbolize: true }) if file.is_a? String
+    return JSON.load(File.open(file), { symbolize_names: true }) if file.is_a? String
 
     if file.is_a? Array
-      file.each { |f| JSON.load(File.open(f), { symbolize: true })}
+      file.each { |f| JSON.load(File.open(f), { symbolize_names: true })}
     end
   end
 
@@ -60,7 +60,7 @@ module Utilities
     end
 
     def self.lookup(file_location, string_to_search, *args)
-      data = JSON.parse(File.read(file_location), { symbolize_keys: true })
+      data = JSON.parse(File.read(file_location), { symbolize_names: true })
 
       data.each do |d|
         if d.keys[0] == string_to_search

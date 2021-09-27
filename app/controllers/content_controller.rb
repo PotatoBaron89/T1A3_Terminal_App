@@ -3,19 +3,23 @@
 module ContentController
   CACHE = {
     words_en: lambda { |array|
-      res = array.map { |arr| arr.keys }
+      res = array.map { |arr|
+        arr[0] }
       return res
     },
     words_fr: lambda { |array|
 
       res = array.map do |arr|
-        key = arr.keys[0]
+        key = arr[0]
+
         {
-          type: arr[key][0]['type'],
-          word: arr[key][1]['translation'],
-          gender: arr[key][2]['gender']
+          type: arr[1]['type'],
+          word: arr[1]['translation'],
+          gender: arr[1]['gender']
         }
+
       end
+
       return res
     }
   }.freeze

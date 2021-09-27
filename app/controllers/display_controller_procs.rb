@@ -32,21 +32,33 @@ module DisplayController
       system 'clear'
 
       active = true
+      # Load Lesson Content
+      descriptions, words_en, french_words, questions = Curriculum.lessons[index].load_lesson(sect_index)
+
       while active
         system 'clear'
-        descriptions, words_en, french_words, questions = Curriculum.lessons[index].load_lesson(sect_index)
+        # Get Random Word From List
         rand_index = Random.rand(words_en.length - 1)
+
+        # Store Word as Object and add to User Vocab List
+        word = words_en[rand_index][0]
+        word = { "#{word}": french_words[rand_index] }
+        Session::USER[:word_add_to_vocab].call(session, word)
+        Session::USER[:save_session].call(session)
+
+
         DisplayController.prompt_flash_card(words_en[rand_index], french_words[rand_index][:word].join(' / '))
       end
     },
     # Must be a cleaner way than to return this
     create_card: lambda { |content, title, prev_word=''|
                   box = TTY::Box.frame(width: 35, height: 10, align: :center, padding: 3, border: :thick,
-                                       title: {top_left: title, top_center: " #{prev_word} " }) do
+                                       title: {top_left: "═ #{title} ", top_center: "| #{prev_word} |", bottom_right: "|  Version: #{DISPLAY[:version].call}  |══" }) do
                     content
                   end
                   return box
-                }
+                },
+    version: -> { return ENV['VERSION'] }
   }.freeze
 end
 

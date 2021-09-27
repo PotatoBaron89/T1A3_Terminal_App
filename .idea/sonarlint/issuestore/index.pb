@@ -23,20 +23,5 @@ C
 spec/spec_helper.rb,6\0\60fdfdbae843d7e48fd48bfe0f581e60b714bd8c
 I
 spec/unit/members_spec.rb,2\5\25b5b3660234d187ad714fbb3c30fe0b2f6830b6
-4
-.env,3\c\3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-F
-lib/modules/members.rb,b\b\bb77f37eb6180fb27267f571dfee133516e31c6e
-P
- cache/place_holder_db/users.json,0\3\03ba4e2b2ed29b62949a2af76dd4f3f5787108a5
-F
-lib/modules/session.rb,6\9\6976c08414937ea42f982115341d1ce52647ebb4
-Q
-!app/controllers/api_controller.rb,7\e\7e6a4f1363734831a77a9a5123ff0fa85db176bc
 R
 "app/controllers/user_controller.rb,a\1\a1418e6c42ac80f34cde4825cfd9bfd7f7cf2b15
-H
-lib/modules/utilities.rb,8\3\833fe83bbda8f0ca410dca3959d92aed1100a4f2

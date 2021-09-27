@@ -1,0 +1,28 @@
+{
+  "user_info": {
+    ":username" : "Jon Snow" ,
+    ":display_name" : "Jon" ,
+    ":date_created" : "27/09/2021" ,
+    ":login_times" : ["date" , "date" , "date"],
+    ":time_active": 60
+  },
+
+  "vocab": [
+
+    { ":good": {
+      ":type":  "[:adj :d]" , ":translation":  "bon/bonne" , ":gender": "none"
+      ":stats": {
+        ":attempt_results": [true, true ,true, false, true, false]
+        }
+      }
+    }
+    ":bad": {
+      ":type":  "[:adj :d]" , ":translation":  "bon/bonne" , ":gender": "none"
+      ":stats": {
+        ":attempt_results": [true, true ,true, false, true, false]
+      }
+    }
+    }
+  ]
+
+}

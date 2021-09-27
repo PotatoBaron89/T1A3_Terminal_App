@@ -16,8 +16,7 @@ module Curriculum
         new_lesson = Lesson.new(lesson)
         @lessons.push new_lesson
       end
-      # return temp
-      end
     end
+  end
 end
 

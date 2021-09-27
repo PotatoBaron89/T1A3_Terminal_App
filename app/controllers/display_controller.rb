@@ -18,15 +18,17 @@ module DisplayController
   include UserController
   @prompt = TTY::Prompt.new
 
-  def card_width
-    return '                                      '
+  # Returns version of the app from ENV
+  def version
+    ENV['VERSION']
   end
 
   def self.display_splash
     system 'clear'
-    TTY::Box.frame('Apprenons-en Français!'.colorize(:light_green), align: :center, padding: 3, width: 30,
-                   height: 10, title: {top_left: "By Sam O'Donnell".colorize(:yellow),
-                                       bottom_right: 'v0.05'.colorize(:yellow) })
+    font = TTY::Font.new(:straight)
+    TTY::Box.frame(font.write('APPRENONS!').colorize(:light_green), align: :center, padding: 3, width: 60,
+                   height: 10, title: {top_left: "|  By Sam O'Donnell  |".colorize(:yellow),
+                                       bottom_right: "|  Version: #{DISPLAY[:version].call}  |".colorize(:yellow) })
   end
 
   def self.print_message(msgs, pause: true)
@@ -95,7 +97,6 @@ module DisplayController
   end
 
   def self.prompt_flash_card(word, second_word, randomise_prompt = true)
-    word = word[0]
     i = Random.rand(2) if randomise_prompt
     word, second_word = second_word, word if i == 1
 
