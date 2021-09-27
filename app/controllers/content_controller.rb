@@ -2,11 +2,13 @@
 # Documentation needed
 module ContentController
   CACHE = {
+    # Specifcally for pulling vocab from lessons
     words_en: lambda { |array|
       res = array.map { |arr|
         arr[0] }
       return res
     },
+    # Specifcally for pulling vocab from lessons
     words_fr: lambda { |array|
 
       res = array.map do |arr|

@@ -9,11 +9,7 @@ require_relative '../lib/modules/curriculum'
 require 'dotenv'
 Dotenv.load('../.env')
 
-
 Curriculum.setup_lesson_info
-
-
-
 Membership.setup_db
 session = Session.new('Guest', false)
 
@@ -25,10 +21,12 @@ until session.is_authenticated
   handle_failed_login = -> { Membership.register if DisplayController.yes_no('Would you like to register an account?') }
 
   session = DisplayController.sign_in("Welcome #{session}, What would you like to do?".colorize(:yellow))
+
   Session::USER[:setup_user_cache].call(session.username)
   handle_failed_login unless defined?(session).nil? == false && session.is_authenticated
 
   unless session.is_authenticated == false
+    session.vocab = Session::USER[:load_session].call(session)
     puts "Welcome #{session.username.colorize(:yellow)}!"
     gets
     break

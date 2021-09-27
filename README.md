@@ -1,5 +1,28 @@
 # Readme:
 
+### Change Log: 0.09
+* Fixed a bug with logging in, previously added symbolize_names = true when loading json files which broke the system.
+* Fixed a bug where the first letter of the english word was being used as the key when being stored into json.
+* Fixed an issue where english key was being stored within an array unnecessarily.
+* Storage IO updated
+  * New words are now appended to the users vocabularly list and are saved locally for use between sessions.
+  * Now loads stored data upon successful login / authentication.
+  * Fixed several bugs related to file IO, eg new files being instantiated as an invalid json (blank).
+  * Fixed an issue where when appending data it wasn't correctly nested.
+
+**File Structure For Vocab**
+
+This was changed in the previous patch but wasn't reflected in the change log.
+New method is as follows, unnecessary nesting removed. 
+```
+ {
+        "big": {"type": ":adj :desc", "translation": ["gros" , "grosse"], "gender": "none"},
+        "small": {"type": ":adj :desc", "translation": ["petit" , "petite"], "gender": "none"},
+        "old": {"type": ":adj :desc", "translation": ["ancien" , "ancienne"], "gender": "none"},
+        "tree": {"type": ":adj :desc", "translation": ["arbre"], "gender": "masculine"}
+      },
+   ```
+
 ### Change Log: 0.08
 * Added system for logging users learnt words and storing them in local.
 * Minor changes to flash cards presentation

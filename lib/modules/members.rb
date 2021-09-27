@@ -9,29 +9,20 @@ require_relative './utilities'
 require_relative './session'
 
 # DOCUMENTATION
-#
-# @description Handles Logic and display for login, logout, register
-# @method --- login
-#     @info sends user to login screen
-# @method --- logout
-#     @info sends user to logout screen
-# @method --- register
-#     @info sends user to registration screen
-#
+
 module Membership
   include BCrypt
 
-  def self.authenticate_user(username, password, list_of_users)
+  def self.authenticate_user(username, password)
     system 'clear'
+    Utilities.user_db_get.each do |user_info|
 
-    list_of_users.each do |user_info|
-      next unless user_info[username.to_s]['username'] == username &&
-                  verify_hash_digest(user_info[username.to_s]['password']) == password
+      next unless user_info[username.to_sym][:username] == username &&
+                  verify_hash_digest(user_info[username.to_sym][:password]) == password
 
       return true
     rescue NoMethodError
-      # log error
-      puts 'Incorrect login information required'
+      puts 'Incorrect login information provided'
       return false
     end
     # Look ended, no match found, give error and let user retry
@@ -51,8 +42,11 @@ module Membership
     username = self::Utils.request_username
     password = self::Utils.request_password
 
-    if Membership.authenticate_user(username, password, Utilities.user_db_get)
-      Session.new(username, true)
+    if Membership.authenticate_user(username, password)
+      session = Session.new(username, true)
+      # session.vocab = Session::USER[:load_session].call(session)
+      return session
+
     else
       Session.new('guest', false)
     end
@@ -66,14 +60,10 @@ module Membership
     system 'clear'
     # Get User's Desired Username
     puts 'Create a new account.'
+    # Check whether Username is already in use > Salt Password > Append data to psuedo-server
     username = self::Utils.request_username
-    # Check whether Username is already in use
     raise UserExists if self::Utils.user_exists?(username)
-
-    # Get User's Desired Password and Salt it, Utils.request handles PW Requirements.
     password = Utilities.salt_data(self::Utils.request_password)
-
-    # Append data to user_db
     Utilities::Data.append_data(
       { username.to_sym => { username: username, password: password } }, Utilities.user_db_link
     )
@@ -134,4 +124,4 @@ module Membership
       Utilities::Data.lookup(Utilities.user_db_link, username, :password)
     end
   end
-end
+  end

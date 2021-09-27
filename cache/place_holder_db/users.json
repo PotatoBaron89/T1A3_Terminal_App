@@ -1,86 +1,56 @@
 [
   {
-    "sam": {
-      "username": "sam",
-      "password": "$2a$12$Syxmb9ymmqjQR.jH.OTq8.xApMBiteHwGaqX7Z.3aicJs4oEFvjji"
+    "Sam": {
+      "username": "Sam",
+      "password": "$2a$12$fpM.YJvEObLJfrVw0VjNUeZIjMgCjhf6spkUyT0i7IfN9a52l7ASS"
     }
   },
   {
-    "sam": {
-      "username": "Developer",
-      "password": "$2a$12$Syxmb9ymmqjQR.jH.OTq8.xApMBiteHwGaqX7Z.3aicJs4oEFvjji"
+    "Billy": {
+      "username": "Billy",
+      "password": "$2a$12$tPtQsjQjurmDRaszr8LbX.8XsEBfBLkPzkLxQ5Eqbd/LV4SE/DeUe"
     }
   },
   {
-    "josephine": {
-      "username": "josephine",
-      "password": "$2a$12$g1YBLBWWhQA4lViSm49vGOHqjw.N7UTDzvzdjYcRyZRvonLYXPw2."
+    "Sammmm": {
+      "username": "Sammmm",
+      "password": "$2a$12$NTHKKWFysg3rk7i81KM3hejKOf1RzAT.n4x0X8FeEJ1q3cwPhoLzy"
     }
   },
   {
-    "testaccount": {
-      "username": "testaccount",
-      "password": "$2a$12$AUiQ9rpXboPTA9xgqAcdXOemEqvWNshY09Ap3jQ5Qqfr6Cdf.f2gy"
+    "kkk": {
+      "username": "kkk",
+      "password": "$2a$12$VwVOVvOHGTPj3/4ljhWX2Om.SuvkH/ViD40LnZvmgYowfZf3H9Fxu"
     }
   },
   {
-    "test": {
-      "username": "test",
-      "password": "$2a$12$GU6ozlszo4QfYIPNzuogHe9Vm3Uq/nyOC.3.kInlLwTcm8xGj8XXG"
+    "lll": {
+      "username": "lll",
+      "password": "$2a$12$64zqwdbWR2DgEswrgwpa3utRS5yrxEPW6XMepyamwQHe5Q.J9aBHi"
     }
   },
   {
-    "bob": {
-      "username": "bob",
-      "password": "$2a$12$3eutn5XZkDt.fgQBaLBu1uNkfljMfxJCgiuQOefYLnFpa79IisQk."
+    "Catty": {
+      "username": "Catty",
+      "password": "$2a$12$LhKI7gtyzu89Yypnma7V9es8k5yVuIbD.Muce0jCzyMzleZ/yJjza"
     }
   },
   {
-    "fdf": {
-      "username": "fdf",
-      "password": "$2a$12$Y0lnsHIOcqSP/WpJhm35Eez4wPMEFKhPgRG/8WyHkaIe8RtjNlSlC"
+    "Pete": {
+      "username": "Pete",
+      "password": "$2a$12$7XMfxCRMCtn8kQbh6RQgduO4.PHRuHEyftZjH2h81ZO52VLVJvIVO"
     }
   },
   {
-    "dfafdfdf": {
-      "username": "dfafdfdf",
-      "password": "$2a$12$FZJ1HgvjfDidbWo2PIbLz.0ZpSEBMaqZeNRHSmUWf.UudK9pt83U2"
+    "hilllll": {
+      "username": "hilllll",
+      "password": "$2a$12$86X.Elp5LtrmtFs7lcw4ee1hJiBJ2EdM.qpKAgffo.4qICE4pC/Qi"
     }
   },
   {
-    "fdaffdea": {
-      "username": "fdaffdea",
-      "password": "$2a$12$/D1tDXGRIZghvGid31Jlfe7puHcmoA7UE94JSeVLa0ieBlvj.WGXe"
-    }
-  },
-  {
-    "dfafadsf": {
-      "username": "dfafadsf",
-      "password": "$2a$12$VGMOaNRtPVpOdUu6aycsb.w2nBz2kilsPRYWGzeXIQn5c5rMVuNoe"
-    }
-  },
-  {
-    "sophie": {
-      "username": "sophie",
-      "password": "$2a$12$a2RgHsCPQXWsWShiM0H2huRqjlT1N/QMUo0STVxU1zeUxvbfqxFqC"
-    }
-  },
-  {
-    "Josephine": {
-      "username": "Josephine",
-      "password": "$2a$12$Tu8LFL05AsvqrNrwyHqTOOEZxKwmYt90qszqgfxc/Ku2TqvxOB.au"
-    }
-  },
-  {
-    "bobby": {
-      "username": "bobby",
-      "password": "$2a$12$xefRaR9rPbPrw.TpGKc6suihhGFYz5SeHptSHWEK1AM5ZnnoTQPYO"
-    }
-  },
-  {
-    "ababadf": {
-      "username": "ababadf",
-      "password": "$2a$12$aKrVviWqOtDpoRfDjF2II.nVKPRBCHnBEOeC2gVU3CC0cwgwEDyFK"
+    "Sam": {
+      "username": "Sam",
+      "password": "$2a$12$2agT.UQq.MCC7v6WxDsO3uPpT9S9w1suNvKI5En8PYk066LmwXWlK"
     }
   }
 ]

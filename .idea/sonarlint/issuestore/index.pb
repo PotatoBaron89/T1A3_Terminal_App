@@ -23,5 +23,3 @@ C
 spec/spec_helper.rb,6\0\60fdfdbae843d7e48fd48bfe0f581e60b714bd8c
 I
 spec/unit/members_spec.rb,2\5\25b5b3660234d187ad714fbb3c30fe0b2f6830b6
-R
-"app/controllers/user_controller.rb,a\1\a1418e6c42ac80f34cde4825cfd9bfd7f7cf2b15

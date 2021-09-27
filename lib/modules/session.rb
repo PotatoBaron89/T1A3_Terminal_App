@@ -5,9 +5,11 @@
 #
 # @tasks: Store use session info
 # @tasks: Pull relevant information from DB (or pseudo db in our case)
+
 class Session
   attr_reader :username
   attr_accessor :is_authenticated, :dev_mode, :vocab
+  include Utilities
 
   def initialize(username, is_authenticated = false, dev: false)
     @username = username
@@ -31,26 +33,40 @@ class Session
       gets
       Dir.mkdir('../cache') unless File.exist?('../cache')
       Dir.mkdir(USER[:user_dir_path].call()) unless File.exist?('../cache/local_saves/')
-      File.open("../cache/local_saves/#{username}.json", 'w+') unless File.exists?("../cache/local_saves/#{username}.json")
+      unless File.exists?("../cache/local_saves/#{username}.json")
+        File.open("../cache/local_saves/#{username}.json", 'w+') { |f| f.write('{":Vocab":{}}') }
+      end
     },
     user_data_path: ->(username) { return "../cache/local_saves/#{username}.json" },
     user_dir_path: -> { return '../cache/local_saves/' },
     word_add_to_vocab: lambda { |session, word|
-      session.vocab[word.keys[0]] = word.values
+      # Remember key returns an array, which we don't want (hence the [0])
+      session.vocab[":Vocab"].store(word.keys[0], word.values)
     },
     find_words_by_type: lambda { |session, type|
-      file = File.open(USER[:user_data_path].call(session.username), 'r')
-      content = JSON.parse(file, { symbolize_names: true } )
-      file.close
 
       matches = []
-      content[":Vocab"].select do |word|
-        matches << word if word
+      session.vocab.select do |word|
+
+        if word["type"] == type
+          matches << word
+        end
       end
     },
     save_session: lambda { |session|
-      json = JSON.pretty_generate(":Vocab": session.vocab)
-      File.open(USER[:user_data_path].call(session.username), 'w') { |file| file.write(json) }
+      key = ":Vocab"
+      file_path = USER[:user_data_path].call(session.username)
+      hash = JSON.parse(File.read(file_path)) if File.exist?(file_path)
+      hash = hash[key].each { |_| }
+
+      merged = hash.merge(session.vocab[key])
+      merged = merged[key] ? JSON.generate(merged) : JSON.generate(":Vocab": merged)
+
+      File.open(file_path, 'w') { |file| file.write(merged) }
+    },
+    load_session: lambda { |session|
+      file_path = USER[:user_data_path].call(session.username)
+      return JSON.parse(File.read(file_path))
     }
     #word_attempt_results: ->(session, result) { }
 
