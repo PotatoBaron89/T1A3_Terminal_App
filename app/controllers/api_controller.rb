@@ -3,7 +3,6 @@ require 'uri'
 require 'net/http'
 
 
-
 # Handles API Calls
 module Api
   @token = ENV['TOKEN']

@@ -1,5 +1,26 @@
 # Readme:
 
+
+### Change Log: 0.011
+
+
+* Added profile page, contains basic information for now
+* Integrated 'Remedy' gem and made changes to make it suite my purposes.
+* Remedy has been intregrated with the flash cards to allow for handling of user response.
+* Major impovements made to the flash card system.
+  * Different controls no supported, can now finally return to study menu or main menu from flash cards.
+* First steps taken into intregrating further stats about the user.  Not quite integrated yet.
+* Added ability to change Display name.  Does not save to disk yet however.
+
+
+* Fixed bugs related to menu not behaving correctly.
+* Major refactor, moved a lot of procs into their own definitions.  Still needs a lot of further work to bring to a high standard.
+
+
+**Known Issues:**
+* Can't call lesson.title from a tty-prompt menu without it bugging out.  Haven't been able to figure it out so I'm working around it for the time being.
+
+
 ### Change Log: 0.010
 **Slew of critical bug fixes related to previous changes**
 * Fixed issue with login system behaving incorrectly

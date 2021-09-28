@@ -9,6 +9,7 @@ rescue LoadError
   puts '"bundle install"'.colorize(:yellow)
 end
 
+require_relative '../../lib/modules/listener'
 require_relative '../../lib/modules/members'
 require_relative 'user_controller'
 require_relative 'display_controller_procs'
@@ -19,8 +20,8 @@ module DisplayController
   @prompt = TTY::Prompt.new
 
   # Returns version of the app from ENV
-  def version
-    ENV['VERSION']
+  def self.version
+    return ENV['VERSION']
   end
 
   def self.display_splash
@@ -28,7 +29,7 @@ module DisplayController
     font = TTY::Font.new(:straight)
     TTY::Box.frame(font.write('APPRENONS!').colorize(:light_green), align: :center, padding: 3, width: 60,
                    height: 10, title: {top_left: "|  By Sam O'Donnell  |".colorize(:yellow),
-                                       bottom_right: "|  Version: #{DISPLAY[:version].call}  |".colorize(:yellow) })
+                                       bottom_right: "|  Version: #{DisplayController.version}  |".colorize(:yellow) })
   end
 
   def self.print_message(msgs, pause: true)
@@ -39,9 +40,8 @@ module DisplayController
     end
   end
 
-  def self.prompt(msg)
-    res = TTY::Prompt.new.ask('Username: ')
-    puts "Res: #{res}"
+  def self.prompt(msg = 'Username: ')
+    return TTY::Prompt.new.ask(msg)
   end
 
   def self.yes_no(msg)
@@ -61,15 +61,14 @@ module DisplayController
       menu.choice 'Register', USER[:register_plus_new_session]
       menu.choice 'Close', -> { exit(true) }
     end
-
   end
 
-  def self.main_menu(session, msg = 'Main Menu'.colorize(:light_green))
+  def self.main_menu(session, msg = " |  Main Menu  |        Signed in as: #{session}".colorize(:light_green))
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
-      menu.choice 'Study', -> { study_menu(session) }
+      menu.choice '[Alpha] Study', -> { study_menu(session) }
       menu.choice 'Flash Cards', -> { flash_card_menu(session) }
-      menu.choice 'Profile'.colorize(:black)
+      menu.choice 'Profile', -> { show_profile(session) }
       menu.choice 'Settings'.colorize(:black)
       menu.choice 'About'.colorize(:black)
       menu.choice 'Logout', -> { session.sign_out }
@@ -80,9 +79,21 @@ module DisplayController
   def self.flash_card_menu(session, msg = 'Select a list to study')
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
+      menu.choice "Your learnt vocab [Items: #{session.vocab[':Vocab'].length}]",
+                  -> { print_message(session.vocab[Session.vocab_key].keys) }
       menu.choice 'Greetings and Introductions'.colorize(:black)
       menu.choice 'Verbs'.colorize(:black)
       menu.choice 'Adjectives'.colorize(:black)
+      menu.choice 'Back', -> { main_menu(session) }
+    end
+  end
+
+  def self.show_profile(session, msg = "#{session}'s Profile")
+    system 'clear'
+    TTY::Prompt.new.select(msg) do |menu|
+      menu.choice "Display Name: #{session}", -> { session.change_display_name }
+      menu.choice "Username: #{session.username}"
+      menu.choice "Known Words: #{session.vocab[':Vocab'].length}"
       menu.choice 'Back', -> { main_menu(session) }
     end
   end
@@ -91,21 +102,51 @@ module DisplayController
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
       Curriculum.lessons.each_with_index do |lesson, i|
-        menu.choice "#{lesson.difficulty} :  #{lesson.title}", -> { DISPLAY[:lesson_info].call(i, session) }
+
+        menu.choice "#{lesson.difficulty} || #{lesson.desc}", -> { DisplayController.lesson_info(i, session) }
+        # menu.choice "#{lesson.difficulty} || #{lesson.desc}", -> { DISPLAY[:lesson_info].call(i, session) }
       end
       menu.choice 'Back', -> { main_menu(session) }
     end
   end
 
-  def self.prompt_flash_card(word, second_word, randomise_prompt = true)
+  ##
+  # @Description Handles User Response to Flash Cards
+  # Correct = True     |     Incorrect = False
+  def self.correct?(correct)
+    DisplayController.print_message(['Correct :)']) if correct
+    DisplayController.print_message(['Incorrect, Keep practicing :)']) unless correct
+  end
+
+  def self.prompt_flash_card(word, second_word, session, randomise_prompt = true)
     i = Random.rand(2) if randomise_prompt
     word, second_word = second_word, word if i == 1
 
-    puts DISPLAY[:create_card].call(word, 'Prompt')
-    gets
+    # Proc, Overrides default input handling
+    options = Proc.new { |key, session|
+
+      DisplayController.study_menu(session) if key.to_s == 'c'
+      DisplayController.main_menu(session) if key.to_s == 'm'
+      if key.to_s == 'h'
+        DisplayController.print_message(['Entering your results is optional, but if you would like to',
+                                        'simply press ↑ arrow for correct and ↓ down arrow for incorrect.'])
+      end
+
+      # Override key to break loop
+      correct?(true) if key.to_s == 'up'
+      correct?(false) if key.to_s == 'down'
+    }
+
+    # Display Card One, Options, Await Response
+    puts "C: Back    M: To Menu     ↑ :   Mark Correct    ↓ : Mark Incorrect   H :  Help    Any Other :  Next "
+    print DisplayController.create_card(word, 'Prompt')
+    ListenerContent.new.only_listen(session, &options)
+
+    # Display Card Two, Options, Await Response
     system 'clear'
-    print DISPLAY[:create_card].call(second_word, 'Answer', word)
-    gets
+    puts "C: Back    M: To Menu     ↑ :   Mark Correct    ↓ : Mark Incorrect   H :  Help    Any Other :  Next "
+    print DisplayController.create_card(second_word, 'Answer', word)
+    ListenerContent.new.only_listen(session, &options)
 
   end
 end

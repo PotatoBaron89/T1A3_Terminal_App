@@ -6,7 +6,7 @@ class Lesson
   include Utilities
 
   attr_reader :raw, :title, :difficulty, :author, :updated, :modules, :desc, :section_titles, :section_descriptions,
-              :file_ref, :sys
+              :file_ref, :sys, :title_debug
 
   # sets up basic meta information, not core content
   def initialize(json_file_path)
@@ -17,6 +17,7 @@ class Lesson
 
     super()
     @title = hash[mod][":Title"]
+    @title_debug = hash[mod][":Title"]
     @difficulty = hash[mod][":Difficulty"]
 
     @author = hash[mod][":Author"]

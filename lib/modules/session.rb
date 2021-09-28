@@ -13,6 +13,7 @@ class Session
 
   def initialize(username, is_authenticated = false, dev: false)
     @username = username
+    @display_name = username
     @is_authenticated = is_authenticated
     @dev_mode = true
     @vocab = {}
@@ -22,8 +23,25 @@ class Session
     return ':Vocab'
   end
 
+  def self.userinfo_key
+    return ':User_info'
+  end
+
+  def change_display_name
+    @display_name = DisplayController.prompt('Display Name: ')
+  end
+
+  # @description returns userinfo as a hash
+  def request_userinfo
+    content = { username: self.username,
+                display_name: self.to_s }
+
+    to_write = JSON.generate("#{Session.userinfo_key}": content)
+    to_write = JSON.parse(to_write)
+  end
+
   def to_s
-    @username
+    @display_name
   end
 
   def sign_out
@@ -74,6 +92,7 @@ class Session
       else
         to_write = hash[self.vocab_key].merge(session.vocab[self.vocab_key]) unless hash[self.vocab_key].is_a? NilClass
         to_write = hash[self.vocab_key] ? JSON.generate(to_write) : JSON.generate(":Vocab": to_write)
+        # request_userinfo
       end
 
       File.open(file_path, 'w') { |file| file.write(to_write) }

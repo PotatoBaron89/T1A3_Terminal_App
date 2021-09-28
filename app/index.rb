@@ -38,25 +38,8 @@ until session.is_authenticated
   # handle_failed_login.call
 end
 
-#    ---  MENU
-# Menu >> | Flashcards | Study | Settings | Help | Logout | Exit
 
-
-
-module Utilities
-
-
-  
-  def self.parse_lesson(lesson, session)
-    puts 'placeholder'
-  end
-end
-
-### Load Content ###
-Utilities.get_lesson_links
-#
-
-
+session.request_userinfo
 while session.is_authenticated
   DisplayController.main_menu(session)
 end
