@@ -6,6 +6,7 @@ require_relative './../lib/modules/members'
 require_relative 'controllers/display_controller'
 require_relative '../lib/modules/lesson'
 require_relative '../lib/modules/curriculum'
+require_relative './controllers/user_controller'
 require 'dotenv'
 Dotenv.load('../.env')
 
@@ -17,21 +18,24 @@ session = Session.new('Guest', false)
 
 until session.is_authenticated
   puts DisplayController.display_splash
-  gets
-  handle_failed_login = -> { Membership.register if DisplayController.yes_no('Would you like to register an account?') }
-
   session = DisplayController.sign_in("Welcome #{session}, What would you like to do?".colorize(:yellow))
 
+  handle_failed_login = lambda {
+    if DisplayController.yes_no('Would you like to register an account?')
+      session = Membership.register
+    end
+  }
+
+  handle_failed_login.call unless defined?(session).nil? == false && session.is_authenticated
   Session::USER[:setup_user_cache].call(session.username)
-  handle_failed_login unless defined?(session).nil? == false && session.is_authenticated
+  session.vocab = Session::USER[:load_session].call(session)
 
   unless session.is_authenticated == false
-    session.vocab = Session::USER[:load_session].call(session)
     puts "Welcome #{session.username.colorize(:yellow)}!"
     gets
     break
   end
-  handle_failed_login.call
+  # handle_failed_login.call
 end
 
 #    ---  MENU

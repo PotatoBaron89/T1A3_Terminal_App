@@ -56,11 +56,13 @@ module Membership
     puts 'Placeholder logout'
   end
 
+  # @description Register provides prompts to setup account
+  # @return Returns a session object
   def self.register
     system 'clear'
-    # Get User's Desired Username
+
     puts 'Create a new account.'
-    # Check whether Username is already in use > Salt Password > Append data to psuedo-server
+    # Get username > check not taken > get password > hash password
     username = self::Utils.request_username
     raise UserExists if self::Utils.user_exists?(username)
     password = Utilities.salt_data(self::Utils.request_password)
@@ -117,11 +119,11 @@ module Membership
     end
 
     def self.user_exists?(username)
-      Utilities::Data.lookup(Utilities.user_db_link, username)
+      Utilities::Data.lookup(Utilities.user_db_link, username.to_sym)
     end
 
     def self.get_password(username)
-      Utilities::Data.lookup(Utilities.user_db_link, username, :password)
+      Utilities::Data.lookup(Utilities.user_db_link, username.to_sym, :password)
     end
   end
-  end
+end

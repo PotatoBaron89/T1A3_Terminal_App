@@ -45,6 +45,7 @@ module DisplayController
   end
 
   def self.yes_no(msg)
+    system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
       menu.choice 'yes', true
       menu.choice 'no', false

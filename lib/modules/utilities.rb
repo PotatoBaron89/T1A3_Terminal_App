@@ -59,11 +59,11 @@ module Utilities
       end
     end
 
-    def self.lookup(file_location, string_to_search, *args)
+    def self.lookup(file_location, value_to_search, *args)
       data = JSON.parse(File.read(file_location), { symbolize_names: true })
 
       data.each do |d|
-        if d.keys[0] == string_to_search
+        if d.keys[0] == value_to_search
           return true
         end
       end

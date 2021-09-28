@@ -1,5 +1,18 @@
 # Readme:
 
+### Change Log: 0.010
+**Slew of critical bug fixes related to previous changes**
+* Fixed issue with login system behaving incorrectly
+  * Fixed issue with going to registration after a failed login attempt.
+  * Fixed issue with registration not properly setting up session files.
+* Fixed issue with merging system creating duplicates.
+* Fixed issue with merging throwing crashes if file did not contain vocab already.
+* Fixed an issue with logging in not finding existing users, related to change from string based keys to symbol based keys.
+* Minor reformatting, moving some procs to methods.
+
+Things seem stable again now, ***touchwood***.
+
+
 ### Change Log: 0.09
 * Fixed a bug with logging in, previously added symbolize_names = true when loading json files which broke the system.
 * Fixed a bug where the first letter of the english word was being used as the key when being stored into json.
