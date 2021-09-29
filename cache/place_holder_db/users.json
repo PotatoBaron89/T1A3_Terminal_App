@@ -16,5 +16,23 @@
       "username": "Sammy",
       "password": "$2a$12$qOPSZFw83rknAMwbQUZpzul2CHBEdkAQK9.wbmqKvY2160hIa/6fi"
     }
+  },
+  {
+    "Peter": {
+      "username": "Peter",
+      "password": "$2a$12$5XFCkT3qus3QNH/bdWHJ8OvXHfidzwLzTAVTB3IO5HmYQ8s5RPk2u"
+    }
+  },
+  {
+    "I Am Potato": {
+      "username": "I Am Potato",
+      "password": "$2a$12$Q5/iRfqAW95avGplG.4I2uHalXadj7Iy6Pk4hznEA4sCriuzVP/6C"
+    }
+  },
+  {
+    "Potato": {
+      "username": "Potato",
+      "password": "$2a$12$ll1oMRe9BsW9nS3lmwP/Je6OBy44Sj/JMdbIfa4QIMp5ONTvx11Xi"
+    }
   }
 ]

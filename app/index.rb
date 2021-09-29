@@ -32,14 +32,16 @@ until session.is_authenticated
 
   unless session.is_authenticated == false
     puts "Welcome #{session.username.colorize(:yellow)}!"
+    session.request_userinfo
     gets
-    break
   end
 
+  # session.request_userinfo
+
+  # look session while logged in
+  while session.is_authenticated
+    DisplayController.main_menu(session)
+  end
 end
 
 
-session.request_userinfo
-while session.is_authenticated
-  DisplayController.main_menu(session)
-end

@@ -29,7 +29,7 @@ module Membership
     raise IncorrectLogin
   rescue IncorrectLogin => e
     StandardError.let_user_retry(e)
-    retry
+    return false
   end
 
   def self.verify_hash_digest(password)

@@ -55,7 +55,9 @@ module DisplayController
     system 'clear'
 
     @prompt.select(msg) do |menu|
-      menu.choice 'Dev Mode', -> { Session.new('sam', true) }
+      if ENV['DEVMODE'] == 'true'
+        menu.choice 'Dev Mode', -> { Session.new('sam', true) }
+      end
       menu.choice 'Login', -> { Membership.login }
       menu.choice 'Register', -> { Membership.register }
       menu.choice 'Close', -> { exit(true) }
@@ -65,13 +67,15 @@ module DisplayController
   def self.main_menu(session, msg = " |  Main Menu  |        Signed in as: #{session}".colorize(:light_green))
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
-      menu.choice '[Alpha] Study', -> { study_menu(session) }
+      if ENV['DEVMODE'] == 'true'
+        menu.choice '[In Development] Study', -> { study_menu(session) }
+      end
       menu.choice 'Flash Cards', -> { flash_card_menu(session) }
       menu.choice 'Profile', -> { show_profile(session) }
-      menu.choice '[In Development] Settings'.colorize(:black)
       menu.choice 'About', -> {
         display_splash
         print_message(['App Created By Sam ODonnell', "Version: #{ENV['VERSION']}"])
+        main_menu
       }
       menu.choice 'Logout', -> { session.sign_out }
       menu.choice 'Close', -> { exit(true) }
@@ -95,9 +99,10 @@ module DisplayController
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
       menu.choice "Display Name: #{session}", -> { session.change_display_name }
-      menu.choice "Username: #{session.username}"
-      menu.choice "Your learnt vocab [Items: #{session.vocab[':Vocab'].length}]",
-                  -> { list_known_words(session) }
+      menu.choice "Username: #{session.username}", -> { show_profile(session) }
+      menu.choice "Your learnt vocab [Items: #{session.vocab[:Vocab].length}]",
+                  -> { list_known_words(session)
+                        show_profile }
       menu.choice 'Back', -> { main_menu(session) }
     end
   end
@@ -107,7 +112,7 @@ module DisplayController
 
     TTY::Prompt.new.select("Your known words:") do |menu|
       menu.choice 'Back', -> { main_menu(session) }
-      session.vocab[":Vocab"].each do |item|
+      session.vocab[:Vocab].each do |item|
         menu.choice "#{item["english"]}       #{item["translation"].join(' / ')}"
       end
       menu.choice 'Back', -> { main_menu(session) }
@@ -140,6 +145,7 @@ module DisplayController
     # Proc, Overrides default input handling
     options = Proc.new { |key, session|
 
+      binding.irb if key_to_s == 'back_quote' && ENV['DEVMODE'] == 'true'
       DisplayController.study_menu(session) if key.to_s == 'c'
       DisplayController.main_menu(session) if key.to_s == 'm'
       if key.to_s == 'h'

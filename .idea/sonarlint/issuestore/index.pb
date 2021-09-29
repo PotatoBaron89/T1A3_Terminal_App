@@ -13,8 +13,6 @@ N
 lib/exceptions/bad_password.rb,9\9\999cd8c9e363af24da023de34c645e525346cd0e
 P
  lib/exceptions/invalid_option.rb,f\f\ff76a96baf694a550826724d5bacf849a7710757
-P
- lib/exceptions/standard_error.rb,e\1\e1bbd9e890dcb323889820bf675102c002fbfa93
 Q
 !lib/exceptions/incorrect_login.rb,9\4\94c3af21d42b34ecf3f9ca55453a5b77f22ab840
 C

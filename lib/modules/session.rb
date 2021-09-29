@@ -8,14 +8,14 @@
 
 class Session
   attr_reader :username
-  attr_accessor :is_authenticated, :dev_mode, :vocab
+  attr_accessor :is_authenticated, :dev_mode, :vocab, :devmode
   include Utilities
 
   def initialize(username, is_authenticated = false, dev: false)
     @username = username
     @display_name = username
     @is_authenticated = is_authenticated
-    @dev_mode = true
+    @dev_mode = false
     @vocab = []
   end
 

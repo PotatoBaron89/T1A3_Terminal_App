@@ -1,5 +1,14 @@
 # Readme:
 
+### Change Log: 0.014
+* Under-development features and tools disabled when not in dev-mode.
+
+* Fixed issue with profile not displaying correctly
+* Fixed issue with displaying known words not displaying incorrectly
+* Fixed issue with logout not behaving correctly.
+* Fixed an issue with an incorrect login attempt resulting in an infinite loop.
+* Fixed an issue with the back option returning to the incorrect page.
+
 ### Change Log: 0.013
 * Finished implementing dedicated flashcard system, which takes it's content from `fr_vocab` with its own file structure.
 * Study method is due for an overhaul but primary goal is to tidy up the current program.
@@ -266,10 +275,11 @@ Type: :type :sub-type,
       :adj :i         adjective interrogative
       :adj :adj       adjective attributive
       :adj :dist      adjective distributive
-
+```
 More will be added in the future, documentation will be updated accordingly.
 
 ```
+
 [
   [  #Lesson block
       { Lesson Info: 
@@ -300,8 +310,8 @@ More will be added in the future, documentation will be updated accordingly.
       ...
   ]
 ]
-```
 
+```
 **Dev Notes**
 
 * Think I finally have a grasp on how to order and relate information in an 
