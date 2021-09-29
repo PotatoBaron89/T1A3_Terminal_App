@@ -1,14 +1,20 @@
 [
   {
-    "Josephine": {
-      "username": "Josephine",
-      "password": "$2a$12$mIxGM4a1vAQ1FMSe3jzROuc/RdEsBGdgu2kVHLaUWX2E4.nqlCNpG"
+    "Sam": {
+      "username": "Sam",
+      "password": "$2a$12$d7uv.a.1BLA8MfQ0fr4GAuTdI8QzC7vPdbMYCggnEIeBOn8UjSyY2"
     }
   },
   {
-    "Sam": {
-      "username": "Sam",
-      "password": "$2a$12$PaiitG7D19nHmQlC1Ms1oe4Zk56nqj.gRjVoW/VGHoIa5YZZvxDq."
+    "Josephine": {
+      "username": "Josephine",
+      "password": "$2a$12$CbwLXPXyOiY3o/pwtFRkmORbLTL5Zm3qVcQIRha0pIxGclptAt5Da"
+    }
+  },
+  {
+    "Sammy": {
+      "username": "Sammy",
+      "password": "$2a$12$qOPSZFw83rknAMwbQUZpzul2CHBEdkAQK9.wbmqKvY2160hIa/6fi"
     }
   }
 ]

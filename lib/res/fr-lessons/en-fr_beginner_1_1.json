@@ -1,70 +1,81 @@
 {
-  ":Module": {
-    ":Title": "Describing basic objects" ,
-    ":Difficulty": "Beginner",
-    ":Author": "Sam O'Donnell",
-    ":Last Updated": "27/09/2021",
-    ":Description": "Learn the basics of refering to objects."
+  "Module": {
+    "Title": "Template" ,
+    "Difficulty": "Beginner",
+    "Author": "Sam O'Donnell",
+    "Last_Updated": "29/09/2021",
+    "Description": "Template Lesson File."
   },
-  ":Lessons" : [
+  "Content" :
+  [
     {
-      ":LessonTitle": "1. It's / c'est" ,
-      ":Description": "In this lesson we will learn how to use c'est (it is)" ,
-      ":Vocab":
-      {
-        "good": {"type": ":adj :desc", "translation": ["bon" , "bonne"], "gender": "none"},
-        "bad": {"type": ":adj :desc", "translation": ["mauvais" , "mauvaise"], "gender": "none"},
-        "blue": {"type": ":adj :desc", "translation": ["bleu" , "bleue"], "gender": "none"},
-        "red": {"type": ":adj :desc", "translation": ["rogue" , "mauvaise"], "gender": "none"},
-        "green": {"type": ":adj :desc", "translation": ["vert"], "gender": "none"}
-        },
-      ":Sentences": [
+      "Title": "1. It's / c'est",
+      "Description": "Template Description" ,
+      "Vocab":
+      [
+        { "english" : "good", "translation" : ["bon" , "bonne"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "bad", "translation" : ["mauvais" , "mauvaise"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "it is", "translation" : ["c'est"] , "type" : " " , "gender" : "na" },
+        { "english" : "red", "translation" : ["rouge"] , "type" : ":adj :desc" , "gender" : "feminine" },
+        { "english" : "blue", "translation" : ["bleu" , "bleue"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "green", "translation" : ["gourmand" , "gourmande"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "orange", "translation" : ["orange"] , "type" : ":adj :desc" , "gender" : "feminine" }
+      ],
+
+      "Sentences":
+      [
         { "It is [adj]":  "c'est [adj]"}
       ]
     },
 
     {
-      ":LessonTitle": "2. It isn't / Ce n'est pas" ,
-      ":Description": "In this lesson we will learn how to use Ce n'est pas" ,
-      ":Vocab":
-      {
-        "yellow": {"type": ":adj :desc", "translation": ["jaune"], "gender": "none"},
-        "white": {"type": ":adj :desc", "translation": ["blanc" , "blanche"], "gender": "none"},
-        "black": {"type": ":adj :desc", "translation": ["noir" , "noire"], "gender": "none"}
-      },
-      ":Sentences": [
+      "Title": "2. Template Lesson",
+      "Description": "Placeholder" ,
+
+      "Vocab": [
+        { "english" : "yellow", "translation" : ["jaune"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "white", "translation" : ["blanc" , "blanche"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "gray", "translation" : ["gris"] , "type" : ":adj :desc" , "gender" : "masculine" },
+        { "english" : "black", "translation" : ["noir" , "noire"] , "type" : ":adj :desc" , "gender" : "na" }
+      ],
+
+      "Sentences":  [
         { "It isn't [:adj :desc]":  "Ce n'est pas [:adj :desc]"}
       ]
     },
 
     {
-      ":LessonTitle": "3. It isn't a / Ce n'est pas un" ,
-      ":Description": "In this lesson we will learn how to use un/une." ,
-      ":Vocab":
-      {
-        "car": {"type": ":noun :c", "translation": ["voiture"], "gender": "feminine"},
-        "bus": {"type": ":noun :c", "translation": ["placeholder 1"], "gender": "feminine"},
-        "truck": {"type": ":noun :c", "translation": ["placeholder 2"], "gender": "feminine"},
-        "motorbike": {"type": ":noun :c", "translation": ["placeholder 3"], "gender": "feminine"},
-        "bike": {"type": ":noun :c", "translation": ["placeholder 4"], "gender": "feminine"}
-      },
-      ":Sentences": [
+      "Title": "3. It isn't a / Ce n'est pas un",
+      "Description": "In this lesson we will learn how to use un/une." ,
+
+      "Vocab":  [
+        { "english" : "car", "translation" : ["voiture"] , "type" : ":noun :c" , "gender" : "feminine" },
+        { "english" : "bus", "translation" : ["bus"] , "type" : ":noun :c" , "gender" : "masculine" },
+        { "english" : "truck", "translation" : ["camion"] , "type" : ":noun :c" , "gender" : "masculine" },
+        { "english" : "motorbike", "translation" : ["motorbike"] , "type" : ":noun :c" , "gender" : "feminine" },
+        { "english" : "bike", "translation" : ["vélo"] , "type" : ":noun :c" , "gender" : "masculine" }
+      ],
+
+      "Sentences": [
         { "It is a [:noun :c]":  "Ce n'est pas [:noun :c]"},
         { "It isn't a [:noun :c]":  "Ce n'est pas [:noun :c]"}
       ]
     },
 
     {
-      ":LessonTitle": "4. It is not a / Ce n'est pas" ,
-      ":Description": "In this lesson we will learn how to use c'est (it is)" ,
-      ":Vocab":
-      {
-        "big": {"type": ":adj :desc", "translation": ["gros" , "grosse"], "gender": "none"},
-        "small": {"type": ":adj :desc", "translation": ["petit" , "petite"], "gender": "none"},
-        "old": {"type": ":adj :desc", "translation": ["ancien" , "ancienne"], "gender": "none"},
-        "tree": {"type": ":adj :desc", "translation": ["arbre"], "gender": "masculine"}
-      },
-      ":Sentences": [
+      "Title": "4. It is not a / Ce n'est pas",
+      "Description": "In this lesson we will learn how to use c'est (it is)" ,
+      "Vocab":
+      [
+        { "english" : "big", "translation" : ["gros" , "grosse"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "small", "translation" : ["petit" , "petite"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "old", "translation" : ["ancien" , "ancienne"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "new", "translation" : ["nu" , "nyu"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "expensive", "translation" : ["coûteux" , "coûteuxeuse"] , "type" : ":adj :desc" , "gender" : "na" },
+        { "english" : "tree", "translation" : ["arbre"] , "type" : ":noun :c" , "gender" : "masculine" }
+      ],
+
+      "Sentences": [
         { "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun]"},
         { "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun] [:adj]"},
         { "It is not a [:adj] [:noun :c]":  "Ce n'est pas [:un] [:noun] [:adj]"},
@@ -73,3 +84,5 @@
     }
   ]
 }
+
+

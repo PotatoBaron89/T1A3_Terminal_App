@@ -17,6 +17,17 @@ module Curriculum
         @lessons.push new_lesson
       end
     end
+
+    def setup_flashcard_lists
+      @flashcard_lists = {}
+      flashcards = Utilities.get_flashcard_links.each { |_| }
+      flashcards = Utilities.load_json(flashcards)
+
+      flashcards.each do |flashcard|
+        new_flashcard = Flashcard.new(flashcard)
+        @flashcards.push new_flashcard
+      end
+    end
   end
 end
 

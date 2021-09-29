@@ -17,10 +17,10 @@ module Membership
     system 'clear'
     Utilities.user_db_get.each do |user_info|
 
-      next unless user_info[username.to_sym][:username] == username &&
-                  verify_hash_digest(user_info[username.to_sym][:password]) == password
+      next unless user_info.keys[0] == username.to_sym &&
+      verify_hash_digest(user_info.values[0][:password]) == password
+       return true
 
-      return true
     rescue NoMethodError
       puts 'Incorrect login information provided'
       return false
@@ -44,11 +44,10 @@ module Membership
 
     if Membership.authenticate_user(username, password)
       session = Session.new(username, true)
-      # session.vocab = Session::USER[:load_session].call(session)
       return session
 
     else
-      Session.new('guest', false)
+      Session.new('Guest', false)
     end
   end
 

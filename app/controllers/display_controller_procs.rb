@@ -1,33 +1,8 @@
 require 'strings'
 # Documentation Needed
 module DisplayController
-  def self.flash_card_controller(index, sect_index, session)
-    system 'clear'
 
-    # Load Lesson Content
-    descriptions, words_en, french_words, questions = Curriculum.lessons[index].load_lesson(sect_index)
-    # a = Session::USER[:find_words_by_type].call(session, ":adj :desc")
-
-    active = true
-
-    while active
-      system 'clear'
-      # Get Random Word From List
-      rand_index = Random.rand(words_en.length - 1)
-      type = french_words[rand_index][:type]
-      # additional = Session::USER[:find_words_by_type].call(session, type)
-
-      # Store Word as Object and add to User Vocab List
-      word = words_en[rand_index]
-
-      word = { "#{word}": french_words[rand_index] }
-      Session::USER[:word_add_to_vocab].call(session, word)
-      Session::USER[:save_session].call(session)
-
-      DisplayController.prompt_flash_card(words_en[rand_index], french_words[rand_index][:word].join(' / '), session)
-    end
-  end
-
+  # Needs Refactoring: Loads Meta information about each lesson and lists them for user selection
   def self.lesson_info(index, session)
     system 'clear'
     lesson_card = Curriculum.lessons[index]
@@ -48,30 +23,28 @@ module DisplayController
     end
   end
 
+
   def self.flash_card_controller(index, sect_index, session)
     system 'clear'
     # a = Session::USER[:find_words_by_type].call(session, ":adj :desc")
 
     active = true
     # Load Lesson Content
-    descriptions, words_en, french_words, questions = Curriculum.lessons[index].load_lesson(sect_index)
+    descriptions, word_info, questions = Curriculum.lessons[index].load_lesson(sect_index)
 
     while active
       system 'clear'
       # Get Random Word From List
-      rand_index = Random.rand(words_en.length - 1)
-      type = french_words[rand_index][:type]
+      rand_index = Random.rand(word_info.length - 1)
+      type = word_info[rand_index][:type]
       # additional = Session::USER[:find_words_by_type].call(session, type)
 
       # Store Word as Object and add to User Vocab List
-      word = words_en[rand_index]
 
-      word = { "#{word}": french_words[rand_index] }
-      Session::USER[:word_add_to_vocab].call(session, word)
+      Session::USER[:word_add_to_vocab].call(session, word_info[rand_index])
       Session::USER[:save_session].call(session)
 
-
-      DisplayController.prompt_flash_card(words_en[rand_index], french_words[rand_index][:word].join(' / '), session)
+      DisplayController.prompt_flash_card(word_info[rand_index][:english], word_info[rand_index][:translation].join(' / '), session)
     end
   end
 

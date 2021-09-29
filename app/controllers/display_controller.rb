@@ -11,12 +11,10 @@ end
 
 require_relative '../../lib/modules/listener'
 require_relative '../../lib/modules/members'
-require_relative 'user_controller'
 require_relative 'display_controller_procs'
 
 # Documentation Needed
 module DisplayController
-  include UserController
   @prompt = TTY::Prompt.new
 
   # Returns version of the app from ENV
@@ -27,9 +25,10 @@ module DisplayController
   def self.display_splash
     system 'clear'
     font = TTY::Font.new(:straight)
-    TTY::Box.frame(font.write('APPRENONS!').colorize(:light_green), align: :center, padding: 3, width: 60,
+    puts TTY::Box.frame(font.write('APPRENONS!').colorize(:light_green), align: :center, padding: 3, width: 60,
                    height: 10, title: {top_left: "|  By Sam O'Donnell  |".colorize(:yellow),
                                        bottom_right: "|  Version: #{DisplayController.version}  |".colorize(:yellow) })
+    print_message([' '])
   end
 
   def self.print_message(msgs, pause: true)
@@ -57,8 +56,8 @@ module DisplayController
 
     @prompt.select(msg) do |menu|
       menu.choice 'Dev Mode', -> { Session.new('sam', true) }
-      menu.choice 'Login', USER[:return_new_session]
-      menu.choice 'Register', USER[:register_plus_new_session]
+      menu.choice 'Login', -> { Membership.login }
+      menu.choice 'Register', -> { Membership.register }
       menu.choice 'Close', -> { exit(true) }
     end
   end
@@ -76,7 +75,7 @@ module DisplayController
     end
   end
 
-  def self.flash_card_menu(session, msg = 'Select a list to study')
+  def self.flash_card_menu(session, msg = "Select a list to study   Your known words: #{session.vocab[':Vocab'].length}")
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
       menu.choice "Your learnt vocab [Items: #{session.vocab[':Vocab'].length}]",
@@ -93,7 +92,11 @@ module DisplayController
     TTY::Prompt.new.select(msg) do |menu|
       menu.choice "Display Name: #{session}", -> { session.change_display_name }
       menu.choice "Username: #{session.username}"
-      menu.choice "Known Words: #{session.vocab[':Vocab'].length}"
+      menu.choice "Your learnt vocab [Items: #{session.vocab[':Vocab'].length}]",
+                  -> { binding.irb
+                    fr = session.vocab[':Vocab'].values.map { |word| word[0]['word'] }
+                        print_message(
+                          "#{session.vocab[Session.vocab_key].keys}  : #{fr}") }
       menu.choice 'Back', -> { main_menu(session) }
     end
   end
@@ -118,6 +121,7 @@ module DisplayController
     DisplayController.print_message(['Incorrect, Keep practicing :)']) unless correct
   end
 
+  # Handles Rendering of Flashcards and Awaits User Input, Probably does too much
   def self.prompt_flash_card(word, second_word, session, randomise_prompt = true)
     i = Random.rand(2) if randomise_prompt
     word, second_word = second_word, word if i == 1

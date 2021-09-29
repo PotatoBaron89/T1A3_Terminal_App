@@ -6,9 +6,9 @@ require_relative './../lib/modules/members'
 require_relative 'controllers/display_controller'
 require_relative '../lib/modules/lesson'
 require_relative '../lib/modules/curriculum'
-require_relative './controllers/user_controller'
+
 require 'dotenv'
-Dotenv.load('../.env')
+Dotenv.load('../config.env')
 
 Curriculum.setup_lesson_info
 Membership.setup_db

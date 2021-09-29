@@ -1,6 +1,17 @@
 # Readme:
 
 
+### Change Log: 0.012
+
+* Restructured lesson files again to make them more performant and readable.  
+* Added a settings.env so if keys change for any reason, they can be easily updated.
+* Full conversion of Keys to symbols, had a lot of strings previously.
+* Added dedicated flashcard content.  Will add more content after the system to handle it is implemented (slightly different to pulling vocab from lesson.jsons)
+* Removed some unnecessary files. There are more that can be cut down in the futre.
+
+
+* Fixed another bug with the log in system.
+
 ### Change Log: 0.011
 
 
