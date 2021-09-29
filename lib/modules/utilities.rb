@@ -15,7 +15,7 @@ module Utilities
   end
 
   def self.get_flashcard_links
-    Dir['../lib/res/fr-vocab/*.json']
+    Dir['../lib/res/fr_vocab/*.json']
   end
 
   def self.user_db_get
@@ -26,11 +26,11 @@ module Utilities
   # Returns a parsed json file
   def self.load_json(file)
     # return JSON.load(File.open(file), { symbolize_names: true }) if file.is_a? String
+
     return JSON.parse(File.read(file), { symbolize_names: true }) if file.is_a? String
 
     if file.is_a? Array
-      # file.each { |f| JSON.load(File.open(f), { symbolize_names: true })}
-      file.each { |f| JSON.parse(File.read(f), { symbolize_names: true })}
+      file.each { |f| JSON.parse(File.read(f), { symbolize_names: true }) }
     end
   end
 

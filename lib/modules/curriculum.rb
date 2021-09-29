@@ -1,10 +1,11 @@
 require_relative 'lesson'
+require_relative 'flashcard_module'
 # Documentation Needed
 module Curriculum
   class << self
     include Utilities
 
-    attr_reader :lessons
+    attr_reader :lessons, :flashcard_lists
 
     def setup_lesson_info
       @lessons = []
@@ -19,13 +20,14 @@ module Curriculum
     end
 
     def setup_flashcard_lists
-      @flashcard_lists = {}
-      flashcards = Utilities.get_flashcard_links.each { |_| }
-      flashcards = Utilities.load_json(flashcards)
+      @flashcard_lists = []
+      file_paths = Utilities.get_flashcard_links.each { |_| }
+      flashcard_lists = Utilities.load_json(file_paths)
+      # flashcard_lists = file_paths[:Content]
 
-      flashcards.each do |flashcard|
-        new_flashcard = Flashcard.new(flashcard)
-        @flashcards.push new_flashcard
+      flashcard_lists.each do |flash_list|
+        new_flashcard = FlashcardModule.new(flash_list)
+        @flashcard_lists.push new_flashcard
       end
     end
   end

@@ -1,15 +1,15 @@
 {
   "Module": {
-    "Title": "Using C'est" ,
+    "Title": "Template 2" ,
     "Difficulty": "Beginner",
     "Author": "Sam O'Donnell",
     "Last_Updated": "29/09/2021",
-    "Description": "Learn how to refer to items."
+    "Description": "Template Lesson File."
   },
   "Content" :
   [
     {
-      "Title": "1. It's / c'est",
+      "Title": "1. Template 1",
       "Description": "Template Description" ,
       "Vocab":
       [
@@ -29,7 +29,7 @@
     },
 
     {
-      "Title": "2. Template Lesson",
+      "Title": "2. Template 2",
       "Description": "Placeholder" ,
 
       "Vocab": [
@@ -45,7 +45,7 @@
     },
 
     {
-      "Title": "3. It isn't a / Ce n'est pas un",
+      "Title": "Template 3",
       "Description": "In this lesson we will learn how to use un/une." ,
 
       "Vocab":  [
@@ -63,7 +63,7 @@
     },
 
     {
-      "Title": "4. It is not a / Ce n'est pas",
+      "Title": "Template 4",
       "Description": "In this lesson we will learn how to use c'est (it is)" ,
       "Vocab":
       [

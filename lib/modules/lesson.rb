@@ -42,7 +42,6 @@ class Lesson
 
 
     hash[@@_content_key].each do |section|
-
       @section_titles.push section[@@_lesson_title_key] ||= []
       @section_descriptions.push section[@@_lesson_description] ||= []
     end

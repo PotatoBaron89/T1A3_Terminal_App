@@ -68,24 +68,28 @@ module DisplayController
       menu.choice '[Alpha] Study', -> { study_menu(session) }
       menu.choice 'Flash Cards', -> { flash_card_menu(session) }
       menu.choice 'Profile', -> { show_profile(session) }
-      menu.choice 'Settings'.colorize(:black)
-      menu.choice 'About'.colorize(:black)
+      menu.choice '[In Development] Settings'.colorize(:black)
+      menu.choice 'About', -> {
+        display_splash
+        print_message(['App Created By Sam ODonnell', "Version: #{ENV['VERSION']}"])
+      }
       menu.choice 'Logout', -> { session.sign_out }
       menu.choice 'Close', -> { exit(true) }
     end
   end
 
-  def self.flash_card_menu(session, msg = "Select a list to study   Your known words: #{session.vocab[':Vocab'].length}")
+  def self.flash_card_menu(session)
     system 'clear'
-    TTY::Prompt.new.select(msg) do |menu|
-      menu.choice "Your learnt vocab [Items: #{session.vocab[':Vocab'].length}]",
-                  -> { print_message(session.vocab[Session.vocab_key].keys) }
-      menu.choice 'Greetings and Introductions'.colorize(:black)
-      menu.choice 'Verbs'.colorize(:black)
-      menu.choice 'Adjectives'.colorize(:black)
-      menu.choice 'Back', -> { main_menu(session) }
+    Curriculum.setup_flashcard_lists
+    TTY::Prompt.new.select("Select a list to study   Your known words: #{session.vocab[:Vocab].length}") do |menu|
+
+        Curriculum.flashcard_lists.each_with_index do |f_list, i|
+          menu.choice "#{i+1}. #{f_list.module_title} ", -> { DisplayController.flash_card_info(i, session) }
+        end
+        menu.choice 'Back', -> { main_menu(session) }
+      end
     end
-  end
+
 
   def self.show_profile(session, msg = "#{session}'s Profile")
     system 'clear'
@@ -93,10 +97,19 @@ module DisplayController
       menu.choice "Display Name: #{session}", -> { session.change_display_name }
       menu.choice "Username: #{session.username}"
       menu.choice "Your learnt vocab [Items: #{session.vocab[':Vocab'].length}]",
-                  -> { binding.irb
-                    fr = session.vocab[':Vocab'].values.map { |word| word[0]['word'] }
-                        print_message(
-                          "#{session.vocab[Session.vocab_key].keys}  : #{fr}") }
+                  -> { list_known_words(session) }
+      menu.choice 'Back', -> { main_menu(session) }
+    end
+  end
+
+  def self.list_known_words(session)
+    system 'clear'
+
+    TTY::Prompt.new.select("Your known words:") do |menu|
+      menu.choice 'Back', -> { main_menu(session) }
+      session.vocab[":Vocab"].each do |item|
+        menu.choice "#{item["english"]}       #{item["translation"].join(' / ')}"
+      end
       menu.choice 'Back', -> { main_menu(session) }
     end
   end
@@ -105,9 +118,7 @@ module DisplayController
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
       Curriculum.lessons.each_with_index do |lesson, i|
-
         menu.choice "#{lesson.difficulty} || #{lesson.desc}", -> { DisplayController.lesson_info(i, session) }
-        # menu.choice "#{lesson.difficulty} || #{lesson.desc}", -> { DISPLAY[:lesson_info].call(i, session) }
       end
       menu.choice 'Back', -> { main_menu(session) }
     end

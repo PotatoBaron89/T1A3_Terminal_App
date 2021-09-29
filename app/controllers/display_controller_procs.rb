@@ -24,23 +24,38 @@ module DisplayController
   end
 
 
-  def self.flash_card_controller(index, sect_index, session)
+  def self.flash_card_info(index, session)
     system 'clear'
-    # a = Session::USER[:find_words_by_type].call(session, ":adj :desc")
+    flashcard_content = Curriculum.flashcard_lists[index]
+
+    TTY::Prompt.new.select('Select a subcategory') do |menu|
+      flashcard_content.section_titles.each_with_index do |item, index|
+        menu.choice "#{index+1}. #{item} ", -> { flash_card_controller(index, index, session, false) }
+      end
+      menu.choice 'Back', -> { DisplayController.flash_card_menu(session) }
+      menu.choice 'To main menu', -> { main_menu(session) }
+    end
+  end
+
+
+  def self.flash_card_controller(index, sect_index, session, is_lesson=true)
+    system 'clear'
 
     active = true
-    # Load Lesson Content
-    descriptions, word_info, questions = Curriculum.lessons[index].load_lesson(sect_index)
+    # Load Lesson Content, check if lesson or flashcard (note lesson currently only has flashcard component for now (in development))
+    if is_lesson
+      descriptions, word_info, questions = Curriculum.lessons[index].load_lesson(sect_index)
+    else
+      word_info = Curriculum.flashcard_lists[index].load_flashcard(sect_index)
+    end
 
     while active
       system 'clear'
       # Get Random Word From List
       rand_index = Random.rand(word_info.length - 1)
       type = word_info[rand_index][:type]
-      # additional = Session::USER[:find_words_by_type].call(session, type)
 
       # Store Word as Object and add to User Vocab List
-
       Session::USER[:word_add_to_vocab].call(session, word_info[rand_index])
       Session::USER[:save_session].call(session)
 

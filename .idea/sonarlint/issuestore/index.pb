@@ -21,8 +21,6 @@ C
 spec/spec_helper.rb,6\0\60fdfdbae843d7e48fd48bfe0f581e60b714bd8c
 I
 spec/unit/members_spec.rb,2\5\25b5b3660234d187ad714fbb3c30fe0b2f6830b6
-L
-cache/local_saves/Sammy.json,6\c\6c24c66cdc702ab480d0b66831ce498f1e668860
 P
  cache/local_saves/Josephine.json,2\6\26288218a84042ad6eb57f3ee91df8e24b56ab3d
 O

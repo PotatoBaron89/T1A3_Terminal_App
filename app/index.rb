@@ -35,7 +35,7 @@ until session.is_authenticated
     gets
     break
   end
-  # handle_failed_login.call
+
 end
 
 

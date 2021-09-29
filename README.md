@@ -1,5 +1,46 @@
 # Readme:
 
+### Change Log: 0.013
+* Finished implementing dedicated flashcard system, which takes it's content from `fr_vocab` with its own file structure.
+* Study method is due for an overhaul but primary goal is to tidy up the current program.
+* Added ability to check words known, works correctly, displaying both the english and french words now.
+* Added an about section, provides basic information about the app.
+
+
+* Improved file structure of save, less redundancy and easier to work with.
+* Finished ensuring that all keys are hashed, had an issue where some loaded content was in string form.
+* Fixed issue where duplicate words were being saved both to local memory and to disk.
+
+**Known Issues**
+- Pressing back takes you to the wrong place when in Flashcard menu.
+- Navigation incorrect after concluding with about section.
+- Navigation incorrect after concluding with profile section.
+- Logout behavior incorrect
+
+
+
+  **Flashcard Content Style**
+
+```
+{
+  "Module": {
+    "Title": "Animals" ,
+    "Author": "Sam O'Donnell",
+    "Last Last_Updated": "29/09/2021"
+  },
+  "Content": [
+    {
+      "Title": "Animaux Domestiques",
+      "Vocab": [
+        { "english" : "tortoise" , "translation" : ["tortue"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "canary" , "translation" : ["canari"] , "type" : ":noun :countable" , "gender" : "masculine" }
+        ]
+      },
+      {
+        "Title": "Animaux Domestiques",
+      "Vocab": [
+        ...
+```
 
 ### Change Log: 0.012
 

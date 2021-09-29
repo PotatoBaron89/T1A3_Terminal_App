@@ -16,15 +16,15 @@ class Session
     @display_name = username
     @is_authenticated = is_authenticated
     @dev_mode = true
-    @vocab = {}
+    @vocab = []
   end
 
   def self.vocab_key
-    return ':Vocab'
+    return :Vocab
   end
 
   def self.userinfo_key
-    return ':User_info'
+    return :User_info
   end
 
   def change_display_name
@@ -33,8 +33,8 @@ class Session
 
   # @description returns userinfo as a hash
   def request_userinfo
-    content = { username: self.username,
-                display_name: self.to_s }
+    content = { username: username,
+                display_name: to_s }
 
     to_write = JSON.generate("#{Session.userinfo_key}": content)
     to_write = JSON.parse(to_write)
@@ -55,52 +55,42 @@ class Session
       Dir.mkdir(USER[:user_dir_path].call()) unless File.exist?('../cache/local_saves/')
 
       unless File.exists?("../cache/local_saves/#{username}.json")
-        File.open("../cache/local_saves/#{username}.json", 'w+') { |f| f.write('{":Vocab":{}}') }
+        File.open("../cache/local_saves/#{username}.json", 'w+') { |f| f.write('{"Vocab":{}}') }
       end
     },
     user_data_path: ->(username) { return "../cache/local_saves/#{username}.json" },
 
     user_dir_path: -> { return '../cache/local_saves/' },
 
+    # @About Takes word obj and its it to session.vocab
     word_add_to_vocab: lambda { |session, word|
-      # Remember self.vocab_key returns an array, which we don't want (hence the [0])
-      session.vocab[self.vocab_key].store(word.keys[0], word.values)
-    },
 
-    find_words_by_type: lambda { |session, type|
-      # french_words[0].merge(a)
-
-      # matches = []
-      # session.vocab[":Vocab"].values.select do |word|
-      #   if word[0]["type"] == type
-      #     matches << word[0]
-      #   end
-      # end
-      # return matches
+      session.vocab[vocab_key].push(word)
     },
 
     save_session: lambda { |session|
-      file_path = USER[:user_data_path].call(session.username)
+      users_save_path = USER[:user_data_path].call(session.username)
 
-      # Load Vocab, take words that aren't already stored in session
-      USER[:get_diff_vocab] if File.exist?(file_path)
-      hash = File.exist?(file_path) ? USER[:get_diff_vocab].call(session, file_path) : {}
-
+      # Merge Saved Vocab and Session Vocab, Remove an duplicates
+      USER[:get_diff_vocab] if File.exist?(users_save_path)
+      hash = File.exist?(users_save_path) ? USER[:get_diff_vocab].call(session, users_save_path) : {}
+      session.vocab[vocab_key].uniq!
 
       if hash.nil?
-        to_write = JSON.generate(":Vocab": session.vocab[self.vocab_key])
+        to_write = JSON.generate("Vocab": session.vocab[vocab_key])
       else
-        to_write = hash[self.vocab_key].merge(session.vocab[self.vocab_key]) unless hash[self.vocab_key].is_a? NilClass
-        to_write = hash[self.vocab_key] ? JSON.generate(to_write) : JSON.generate(":Vocab": to_write)
+        to_write = hash[vocab_key].merge(session.vocab[vocab_key]) unless hash[vocab_key].is_a? NilClass
+        to_write = hash[vocab_key] ? JSON.generate(to_write) : JSON.generate("Vocab": to_write)
         # request_userinfo
       end
 
-      File.open(file_path, 'w') { |file| file.write(to_write) }
+      File.open(users_save_path, 'w') { |file| file.write(to_write) }
     },
     load_session: lambda { |session|
-      file_path = USER[:user_data_path].call(session.username)
-      return JSON.parse(File.read(file_path))
+      users_save_path = USER[:user_data_path].call(session.username)
+      return JSON.parse(File.read(users_save_path), { symbolize_names: true })
     },
+    # @ purpose merge session vocab with saved vocab
     # @return Returns hash of unique K, V pairs
     get_diff_vocab: lambda { |session, file_path|
       hash = JSON.parse(File.read(file_path))
@@ -113,8 +103,6 @@ class Session
 
       return hash
     }
-    #word_attempt_results: ->(session, result) { }
-
   }.freeze
 end
 
