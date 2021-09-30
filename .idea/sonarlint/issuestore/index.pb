@@ -1,8 +1,6 @@
 
 O
 spec/unit/logic_wrapper_spec.rb,a\b\ab8160a2426be9ed32ac4b26c462521eed0b22cf
-I
-spec/unit/display_spec.rb,3\b\3b4b318af4366bb424e39bba7a3300321c121941
 6
 .rspec,0\4\047fb137290441b8a2cabd007fd7e13a8ab75ec4
 M
@@ -17,9 +15,20 @@ Q
 !lib/exceptions/incorrect_login.rb,9\4\94c3af21d42b34ecf3f9ca55453a5b77f22ab840
 C
 spec/spec_helper.rb,6\0\60fdfdbae843d7e48fd48bfe0f581e60b714bd8c
-I
-spec/unit/members_spec.rb,2\5\25b5b3660234d187ad714fbb3c30fe0b2f6830b6
 P
  cache/local_saves/Josephine.json,2\6\26288218a84042ad6eb57f3ee91df8e24b56ab3d
 O
 cache/local_saves/template.json,5\5\55eaa5f85e12b1751b07452cc280f16a52e37790
+Q
+!app/controllers/api_controller.rb,7\e\7e6a4f1363734831a77a9a5123ff0fa85db176bc
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+L
+cache/local_saves/Sammy.json,6\c\6c24c66cdc702ab480d0b66831ce498f1e668860
+N
+lib/res/fr_vocab/template.json,7\0\7024a9c6bdad370242479dbf7ef374a43e498261
+Z
+*lib/res/fr-lessons/en-fr_beginner_1_1.json,6\4\64d04debd7da2cef2058ac6f1bb5fd6e04788ad1
+Z
+*lib/res/fr-lessons/en_fr_beginner_1_2.json,0\e\0e19d3b8a7c7da785cb7e77c7693c0c9ce3c809d

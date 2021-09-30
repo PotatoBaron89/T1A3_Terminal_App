@@ -75,7 +75,7 @@ module DisplayController
       menu.choice 'About', -> {
         display_splash
         print_message(['App Created By Sam ODonnell', "Version: #{ENV['VERSION']}"])
-        main_menu
+        main_menu(session)
       }
       menu.choice 'Logout', -> { session.sign_out }
       menu.choice 'Close', -> { exit(true) }
@@ -102,7 +102,7 @@ module DisplayController
       menu.choice "Username: #{session.username}", -> { show_profile(session) }
       menu.choice "Your learnt vocab [Items: #{session.vocab[:Vocab].length}]",
                   -> { list_known_words(session)
-                        show_profile }
+                        show_profile(session) }
       menu.choice 'Back', -> { main_menu(session) }
     end
   end
@@ -113,7 +113,7 @@ module DisplayController
     TTY::Prompt.new.select("Your known words:") do |menu|
       menu.choice 'Back', -> { main_menu(session) }
       session.vocab[:Vocab].each do |item|
-        menu.choice "#{item["english"]}       #{item["translation"].join(' / ')}"
+        menu.choice "#{item[:english]}       #{item[:translation].join(' / ')}"
       end
       menu.choice 'Back', -> { main_menu(session) }
     end
@@ -145,7 +145,7 @@ module DisplayController
     # Proc, Overrides default input handling
     options = Proc.new { |key, session|
 
-      binding.irb if key_to_s == 'back_quote' && ENV['DEVMODE'] == 'true'
+      binding.irb if key.to_s == 'back_quote' && ENV['DEVMODE'] == 'true'
       DisplayController.study_menu(session) if key.to_s == 'c'
       DisplayController.main_menu(session) if key.to_s == 'm'
       if key.to_s == 'h'

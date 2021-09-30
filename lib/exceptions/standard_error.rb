@@ -4,6 +4,6 @@ class StandardError
   def self.let_user_retry(msg)
     system 'clear'
     puts msg
-    gets
+    STDIN.gets
   end
 end

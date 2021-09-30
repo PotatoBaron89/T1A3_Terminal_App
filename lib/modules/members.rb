@@ -36,14 +36,24 @@ module Membership
     BCrypt::Password.new(password)
   end
 
-  def self.login
+  def self.login(username = nil, password = nil)
     system 'clear'
-    puts 'Login to your account.'
-    username = self::Utils.request_username
-    password = self::Utils.request_password
+    username == nil ? arg_passed = false : arg_passed = true
+
+    #check if params were passed, if not, request details
+    if username == nil && password == nil
+      puts 'Login to your account.'
+      username = self::Utils.request_username
+      password = self::Utils.request_password
+    end
+
+    def self.test
+      return true
+    end
 
     if Membership.authenticate_user(username, password)
       session = Session.new(username, true)
+
       return session
 
     else
@@ -88,7 +98,7 @@ module Membership
       file.puts('[]')
       file.close
     end
-    gets
+    STDIN.gets
   end
 
   # Provides behind the scenes utils to allow module to function
@@ -96,7 +106,7 @@ module Membership
     def self.request_username
       print 'Username: '
 
-      username = gets.chomp
+      username = STDIN.gets.chomp
       raise BadUsername, 'Invalid username... Minimum three characters. No special characters' if username.length < 3
 
       username

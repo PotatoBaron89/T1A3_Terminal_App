@@ -19,6 +19,8 @@ class Session
     @vocab = []
   end
 
+
+
   def self.vocab_key
     return :Vocab
   end
@@ -55,7 +57,7 @@ class Session
       Dir.mkdir(USER[:user_dir_path].call()) unless File.exist?('../cache/local_saves/')
 
       unless File.exists?("../cache/local_saves/#{username}.json")
-        File.open("../cache/local_saves/#{username}.json", 'w+') { |f| f.write('{"Vocab":{}}') }
+        File.open("../cache/local_saves/#{username}.json", 'w+') { |f| f.write('{"Vocab":[]}') }
       end
     },
     user_data_path: ->(username) { return "../cache/local_saves/#{username}.json" },
@@ -64,7 +66,6 @@ class Session
 
     # @About Takes word obj and its it to session.vocab
     word_add_to_vocab: lambda { |session, word|
-
       session.vocab[vocab_key].push(word)
     },
 
@@ -98,7 +99,7 @@ class Session
       return nil if hash[:Vocab].is_a? NilClass
 
       hash = hash[:Vocab].each do |item|
-        item if session.vocab[':Vocab'].key? key
+        item if session.vocab[:Vocab].key? key
       end
 
       return hash

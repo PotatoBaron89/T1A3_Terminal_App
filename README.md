@@ -1,4 +1,278 @@
-# Readme:
+# Samuel O'Donnell T1A3 - Terminal Application: - Apprenos 
+
+### Table of Contents
+```
+- Links
+  - Trello Board
+  - Control Flow Diagram
+- Software Development Plan
+  - Application description
+  - The Why
+  - Reason for Development
+  - Target Audience
+  - Use
+- Features
+  - Login system with username and password requirements
+  - Data persistence
+  - Dyanmic Content / Add Your Own Flashcard Modules
+  - Flash Card Display
+  - Profile Page
+- User Interaction and Experience
+  - Controls
+  - How Each Feature is used
+  - Error Handling
+- Implementation Plan
+  - Roadmap
+  - MVP
+  - The 'Sprinkes'
+- Documentation
+  - Installation
+  - How to use the App
+  - Dependencies
+  - System / Hardware Requirements
+- Tests
+
+```
+
+## Links
+
+### Github Repo
+https://github.com/PotatoBaron89/T1A3_Terminal_App
+
+---
+
+### Trello Board
+
+https://trello.com/b/VfMGtHVd/t1a3-terminal-app
+
+---
+
+### Control Flow Diagram
+
+
+https://drive.google.com/file/d/1-uXS5uDvh4fZRWFyCV8ZCBZFDszmmXYX/view?usp=sharing
+
+---
+
+## Software Development Plan
+
+### Application Description
+
+This terminal app is designed to serve as the foundations to a larger language learning application.  For now, it is built around learning French, although this can be easily exampled.  It allows users to create an account, have their session progress and relevant information cached.
+
+Through it, they will be able to use the different tools to help them in their quest to learn and master French.
+
+The application allows the user to load in any compatible json module which will be interpreted by the app and provide learning content.
+
+### The Why
+
+Language learning is a difficult process, but through the use of technology we can help create tools to make it less painful.  Whilst applications like this aren't useful for learning pronunciation they can provide a very useful tool for learning, recognising and remembering new vocabulary.
+
+So ultimately, the goal of this application is to try and make the process of learning more efficent and enjoyable.
+
+
+### - Reason for Development
+
+There are several reasons why I have undergo this project.
+
+
+- It serves a real world purpose; that of providing a tool to help others to learn and improve. Further, in my eyes providing tools to help others learn is incredibly satisfying.
+- I've long wanted to create a fully-featured application that is free for anyone to use and can assist in the learning of others.  This is step one in that direction and will provide a lot of useful experience and information as to what I should expect with a larger scale version of this, and things I ought to take into account.
+
+### Target Audience
+
+- The target audience is anyone who wishes to learn French, and is looking for a tool to help them learn and master vocabulary in French.
+- Anyone looking to use flashcards can easily create their own and have the application parse and present them.
+
+### Use
+
+As mentioned, the main mechanic at this stage is that of flashcards. The underlying point being to learn and master new vocabulary.  Moreover, the application seeks to provide useful tools to assist them with this process.
+
+The application is designed to be run with a reasonably large console size.  If you are experience issues with content displaying strangely, try to increase the window size.
+
+---
+## Features
+
+### Feature 1 |    Flashcards
+
+As mentioned above, the applications primary feature is that of flash cards.  Each card will be randomly pulled based on the chosen options (lesson and subcatagory).  There are plans to add more features, such as multiple choice but they are still under development.
+
+### Feature 2 |    User Accounts
+Anyone can easily setup their own accounts and begin using the application.  The inclusion of accounts allows the application to track a user's progress and relevant stats between sessions.
+
+### Feature 3 | Dynamic Content System
+Allows anyone to quickly make their own flashcard modules to use within the application.  Provided it follows the style mentioned in the documentation below, the application will parse it and present all of its contents for use.  Each file will be given its own menu option, using that files Title key as the description.
+
+### Feature 4 | Module Selection
+In addition to the above, the application will list each each subcategory listed within the flashcard module.  For example, you may have a flashcard.json file listing animals.  Then you may have sections on domestic animals, farm animals, zoo animals, sea creatures etc.  This allows the user to quickly hone in on the content they wish to learn.
+
+### Feature 5 | Profile
+The profile form allows the user to quickly access stored information, such as their username, display name, words learnt (listed in both English and French).  This form also provides a means of updating their Display name.
+
+### Feature 6 | Security
+
+Because user security is paramount, we take the handling of your senstive data seriously.  For this reason all passwords are hashed using `bcrypt`, so that your senstive data is kept sured.
+
+---
+## User Interaction
+
+### Controls
+
+At every step, the goal has been to keep the application easily understandable and as much as possible, consistent. This
+
+**Menus**
+
+↑ Arrow will move the selection upwards
+
+↓ Will move the selection downwards.
+
+Space / Enter will select an option
+
+**Prompts**
+
+Space / Enter will allow you to move through prompts / messages or anywhere else.
+
+**Flash Cards**
+
+Note that the options for flashcards are also displayed at the top of the console when in flashcard mode. This allows
+
+`C`: Back - Returns to the subcategory you came from
+
+`M`: Menu - Returns you to the main menu
+
+`H`: Help - Displays further information
+
+`↑`: Correct - Marks your result as being correct.
+
+`↓`: Incorrect - Marks your result as incorrect.
+
+`Q`: Quit - Quits the application, no data will be lost.
+
+``` ` ```: Debug-mode (Dev mode only).  Currently only works in flashcard mode, as it is not hooked into the gem that controls the menus. 
+
+
+### How each feature is used
+
+
+
+### Error Handling
+Blah blah.
+
+---
+## Implementation Plan
+Blah blah.
+
+
+
+### MVP
+
+Features are to be implemented as follows:
+
+1. Create a sign-in system.
+   - Create an account. Passwords must be hashed to preserve user security.
+   - Login to an existing account.
+   - Instantly sign in with Devmode (if dev mode is enabled)
+   - User account information should be stored on a `pseudo-server`, aka separate dir in local for now.
+   - This requires methods handling login, registration, appending new users, hashing passwords, checking a username already exists.
+2. Since most menus require pulling data to populate them.  We need to create some sample flashcard.json files.
+3. Setup appropriate menus.
+   1. Main Menu:
+      - Study (devmode only, as it is under development.)
+      - Flashcards
+      - Profile
+      - About
+      - Logout: To be implemented as added (2 minute job)
+      - Exit To be implemented as added (5 second job)
+   2. Flashcard menu:
+    - List every compatible json module found.  Should only pull metadata from each lesson at this stage, not have all information from all lessons in system memory!
+    - Back.
+   3. Profile Menu:
+    - Username
+    - Display Name
+    - Known Words [qty: 10]
+4. Setup flashcard system.
+   1. Must have methods to:
+     - get data from the relevant file only and return objects containing necessary information.
+     - handle user input (allow user to mark as correct, incorrect, move to next slide etc)
+     - Save each knew word they come across to their vocabulary.  This will be used to create 'Revision' tools which will only display seen words and to give more flexibility to the study tool when it is finished.  Moreover, allows the user to see what words they have learnt.
+5. About page
+
+
+
+### The 'Sprinkles'
+Blah blah.
+
+
+---
+## Documentation
+
+### Installation
+
+You can run this application by cloning this Git Repo.  Then, dependencies will need to be installed, which can be done by using `bundle install`.
+
+### How to use the app
+
+Next, go into the `app` directory using `cd app` from the root directory.  Next, type `ruby index.rb` a long with any arguments you want to pass (listed below.)
+
+**Valid Arguments**
+
+
+  - `-d` for dev mode
+  - `-h` or `-help` for help (lists different options)
+  - `-login user123 password123` to log on
+  - `-splash` to skip the splash screen.
+
+Commands can be in any order, although username and password must directly follow -login.
+
+Eg: `ruby index.rb -d -login user123 password123 -splash`
+
+
+### Dependencies
+
+- bcrypt (~> 3.1)
+- byebug
+- capybara
+- colorize (~> 0.8.1)
+- columnize (~> 0.9.0)
+- dotenv (~> 2.7)
+- json (~> 2.5)
+- mutant-rspec
+- remedy (~> 0.3.0)
+- rspec-core
+- strings (~> 0.2.1)
+- tty-box (~> 0.7.0)
+- tty-font (~> 0.5.0)
+- tty-prompt (~> 0.23.1)
+
+### System / Hardware Requirements
+
+Since TTY-Prompt is used to display menus, there is functionality loss when running on Windows using `git bash`. 
+
+For more help with getting the application to work in bash, see [here](https://github.com/piotrmurach/tty-prompt#windows-support).
+
+`WSL` will work correctly.
+
+## Tests
+Blah blah.
+
+---
+## Change Logs
+
+### Change Log: 0.015
+
+- Began adding proper documentation.
+- Implemented Command args
+  - -d for dev mode
+  - -h or -help for help (lists different options)
+  - -login user123 password123 to log on
+  - -splash to skip the splash screen.
+  - Commands can be in any order, although username and password must directly follow -login.
+
+* Fixed bug with flashcards when in dev mode
+* Fixed bug with displaying known words
+* Fixed a bug with return to main menu from About
+* Fixed bug where data was incorrectly stored as object, not array
+* Fixed bug when selecting a known word in profile
 
 ### Change Log: 0.014
 * Under-development features and tools disabled when not in dev-mode.

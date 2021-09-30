@@ -34,7 +34,7 @@ module Utilities
 
   def self.hide_req_input
     system 'stty -echo'
-    hidden_data = gets.chomp
+    hidden_data = STDIN.gets.chomp
     system 'stty echo'
     hidden_data
   end
@@ -49,7 +49,36 @@ module Utilities
 
   def self.req_info(str_prompt)
     print str_prompt
-    gets.chomp
+    STDIN.gets.chomp
+  end
+
+  def self.check_args
+
+    ARGV.include?('-d') ?  ENV["DEVMODE"] = 'true' : ENV["DEVMODE"] = 'false'
+    ARGV.include?('-skip') ?  ENV["SKIPSPLASH"] = 'true' : ENV["SKIPSPLASH"] = 'false'
+    # ARGV.include?('-help') || ARGV.include?('-h') ?  ENV["SKIP_SPLASH"] = 'true' : ENV["SKIP_SPLASH"] = 'false'
+
+    if ARGV.include?('-help') || ARGV.include?('-h')
+      puts "-d                      || Enables developer mode"
+      puts "-h / help               || Displays help options"
+      puts "-skip                   || Skips splash card"
+      puts "-login name password    || Sign in as user"
+      puts
+      puts "Example   ruby index.rb -login test testtest -skip -d"
+      puts
+      puts "Order mostly does not matter, except username and password must directly follow '-login'"
+      puts "EG: -d -login user useruser -skip"
+      exit
+    end
+
+    if ARGV.include?('-login')
+      begin
+        index = ARGV.index('-login')
+        Membership.login(ARGV[index + 1], ARGV[index + 2])
+      end
+    else
+      Session.new('Guest', false)
+    end
   end
 
   # Module handles data input / output
