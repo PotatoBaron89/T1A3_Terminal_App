@@ -2,10 +2,11 @@ require_relative 'curriculum'
 require_relative '../../app/controllers/content_controller'
 
 # Documentation needed
-class FlashcardModule
+class FlashcardContent
   include Utilities
 
-  attr_reader :module_title, :difficulty, :modules, :section_titles, :file_ref, :sys
+  attr_reader :module_title, :difficulty, :modules, :section_titles, :file_ref, :sys, :flashcard_count,
+              :module_flashcard_count
 
   # sets up basic meta information, not core content
   def initialize(json_file_path)
@@ -15,17 +16,19 @@ class FlashcardModule
     @module_title = hash[:Module][:Title]
     @file_ref = json_file_path
     @section_titles = []
+    @module_flashcard_count = []
+    @flashcard_count = 0
     # alias to ContentController module
     @sys = ContentController
 
     hash[:Content].each do |section|
       @section_titles.push section[:Title] ||= []
+      @flashcard_count += section[:Vocab].length
+      @module_flashcard_count.push section[:Vocab].length
     end
-
   end
 
-  # Lesson classes are accessed from singleton 'Curriculum' in an array
-  # WIP, currently just handles flashcards
+
   # Load Vocab from selected module
   def load_flashcard(sect_index)
     hash = Utilities.load_json(@file_ref)

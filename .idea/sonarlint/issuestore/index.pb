@@ -29,6 +29,4 @@ L
 N
 lib/res/fr_vocab/template.json,7\0\7024a9c6bdad370242479dbf7ef374a43e498261
 Z
-*lib/res/fr-lessons/en-fr_beginner_1_1.json,6\4\64d04debd7da2cef2058ac6f1bb5fd6e04788ad1
-Z
 *lib/res/fr-lessons/en_fr_beginner_1_2.json,0\e\0e19d3b8a7c7da785cb7e77c7693c0c9ce3c809d

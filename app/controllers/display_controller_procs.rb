@@ -29,8 +29,10 @@ module DisplayController
     flashcard_content = Curriculum.flashcard_lists[index]
 
     TTY::Prompt.new.select('Select a subcategory') do |menu|
+      menu.choice 'Back', -> { DisplayController.flash_card_menu(session) }
       flashcard_content.section_titles.each_with_index do |item, index|
-        menu.choice "#{index+1}. #{item} ", -> { flash_card_controller(index, index, session, false) }
+        menu.choice "#{index+1}. #{item}      Words: #{flashcard_content.module_flashcard_count[index]}",
+                    -> { flash_card_controller(index, index, session, false) }
       end
       menu.choice 'Back', -> { DisplayController.flash_card_menu(session) }
       menu.choice 'To main menu', -> { main_menu(session) }

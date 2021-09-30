@@ -54,8 +54,8 @@ module Utilities
 
   def self.check_args
 
-    ARGV.include?('-d') ?  ENV["DEVMODE"] = 'true' : ENV["DEVMODE"] = 'false'
-    ARGV.include?('-skip') ?  ENV["SKIPSPLASH"] = 'true' : ENV["SKIPSPLASH"] = 'false'
+    ARGV.include?('-d') ?  ENV["DEVMODE"] = 'true' : ENV["SKIP_SPLASH"] = 'false'
+    ARGV.include?('-skip') ?  ENV["SKIP_SPLASH"] = 'true' : ENV["SKIP_SPLASH"] = 'false'
     # ARGV.include?('-help') || ARGV.include?('-h') ?  ENV["SKIP_SPLASH"] = 'true' : ENV["SKIP_SPLASH"] = 'false'
 
     if ARGV.include?('-help') || ARGV.include?('-h')

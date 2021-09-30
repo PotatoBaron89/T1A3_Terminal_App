@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 require_relative '../../lib/modules/members'
 require 'rspec/autorun'
+require 'rspec/core'
+
+
 
 RSpec.describe Membership do
   it 'It allows a user to log in' do
     mock = Membership.login('Sam','12345678')
-    binding.irb
     expect(mock.is_authenticated).to eq(true)
     puts mock
   end
@@ -16,6 +18,11 @@ RSpec.describe Membership do
 
   it 'Test test' do
     expect(Membership.test).to eq(true)
+  end
+
+  it 'Logs you in and creates a session' do
+    mock = login('Sam, 12345678')
+    expect(mock).to be_a_kind_of(Session)
   end
 
   it 'Test test' do

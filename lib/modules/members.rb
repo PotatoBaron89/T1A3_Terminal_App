@@ -98,7 +98,6 @@ module Membership
       file.puts('[]')
       file.close
     end
-    STDIN.gets
   end
 
   # Provides behind the scenes utils to allow module to function

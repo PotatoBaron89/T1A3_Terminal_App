@@ -70,6 +70,7 @@ class Session
     },
 
     save_session: lambda { |session|
+      #Create path to users local save
       users_save_path = USER[:user_data_path].call(session.username)
 
       # Merge Saved Vocab and Session Vocab, Remove an duplicates

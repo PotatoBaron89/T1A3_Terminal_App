@@ -51,13 +51,11 @@ class Lesson
   # WIP, currently just handles flashcards
   # Load the full lesson data
   def load_lesson(sect_index)
-
     hash = Utilities.load_json(@file_ref)
 
     vocab = hash[@@_content_key][sect_index][:Vocab]
     description = hash[@@_content_key][sect_index][:Description]
     questions = hash[@@_content_key][sect_index][:Sentences]
-
     word_info = sys::CACHE[:get_word_object].call(vocab)
 
     return [description, word_info, questions]
@@ -65,4 +63,3 @@ class Lesson
 
 end
 
-# puts hash[1][2][2]    # Sentences

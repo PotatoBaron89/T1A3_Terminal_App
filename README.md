@@ -258,6 +258,16 @@ Blah blah.
 ---
 ## Change Logs
 
+### Change Log: 0.016
+
+- Added word count to modules, eg
+
+`Animals    Words: 54
+ Articles menagers   Words: 47`
+- Added checks before loading content, will validate that lessons / flashcards json files have the correct formatting before pushing them to list.
+- Removed unnecessary comments and cleaned up files somewhat.
+
+
 ### Change Log: 0.015
 
 - Began adding proper documentation.

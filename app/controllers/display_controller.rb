@@ -88,7 +88,9 @@ module DisplayController
     TTY::Prompt.new.select("Select a list to study   Your known words: #{session.vocab[:Vocab].length}") do |menu|
 
         Curriculum.flashcard_lists.each_with_index do |f_list, i|
-          menu.choice "#{i+1}. #{f_list.module_title} ", -> { DisplayController.flash_card_info(i, session) }
+
+          menu.choice "#{i+1}. #{f_list.module_title}          Words: #{f_list.flashcard_count}",
+                      -> { DisplayController.flash_card_info(i, session) }
         end
         menu.choice 'Back', -> { main_menu(session) }
       end
