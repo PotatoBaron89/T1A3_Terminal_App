@@ -43,10 +43,6 @@ module Utilities
     BCrypt::Password.create(data_to_hash)
   end
 
-  def self.salted_match?(str_to_check, salted_data)
-    str_to_check == salted_data
-  end
-
   def self.req_info(str_prompt)
     print str_prompt
     STDIN.gets.chomp

@@ -30,7 +30,7 @@ class Session
   end
 
   def change_display_name
-    @display_name = DisplayController.prompt('Display Name: ')
+    @display_name = DisplayMenus.prompt('Display Name: ')
   end
 
   # @description returns userinfo as a hash
@@ -47,7 +47,7 @@ class Session
   end
 
   def sign_out
-    DisplayController.print_message(['You have successfully signed out.'])
+    DisplayMenus.print_message(['You have successfully signed out.'])
     @is_authenticated = false
   end
 

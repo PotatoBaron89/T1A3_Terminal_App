@@ -98,4 +98,5 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
   config.order = :random
+  config.raise_errors_for_deprecations!
 end

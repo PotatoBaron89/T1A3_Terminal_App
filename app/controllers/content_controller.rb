@@ -17,8 +17,6 @@ module ContentController
       return res
     }
   }.freeze
-
-
 end
 
 

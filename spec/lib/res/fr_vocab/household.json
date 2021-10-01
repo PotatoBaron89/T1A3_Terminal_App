@@ -1,0 +1,87 @@
+{
+  "Module": {
+    "Title": "Articles ménagers" ,
+    "Author": "Sam O'Donnell",
+    "Last Last_Updated": "29/09/2021"
+  },
+  "Content": [
+    {
+      "Title": "Éléments courants",
+      "Vocab": [
+        { "english" : "tortoise" , "translation" : ["tortue"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "canary" , "translation" : ["canari"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "articles de jardin",
+      "Vocab": [
+        { "english" : "donkey" , "translation" : ["âne"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "camel" , "translation" : ["chameau"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "transport par eau",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "mobilier",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Chambres",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Appareils ménagers",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    }
+  ]
+}
+

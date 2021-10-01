@@ -1,4 +1,4 @@
-require_relative 'lesson'
+require_relative '../modules/lesson'
 require_relative 'flashcard_content'
 # Documentation Needed
 module Curriculum

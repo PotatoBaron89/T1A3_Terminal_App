@@ -253,10 +253,30 @@ For more help with getting the application to work in bash, see [here](https://g
 `WSL` will work correctly.
 
 ## Tests
-Blah blah.
+
+There are currently two tests that can be run.  
+- One checks the membership module, and that is properly returns sessions as expected.
+- The second checks the Curriculum class and its two subclasses, which is were all the core content is stored.
+
+1. `rspec spec/unit/Membership_spec.rb` when run from the root dir will check the following:
+   - That a session with a return session where is_authenticated is set to false will properly yield a false value to prevent a session without valid authentication from proceeding.  The membership class is essential for handling user authentication and establlishing sessions.
+   - The second is the inverse of the above.
+   - The fourth will check that we can properly check a string input against a stored hashed password and determine if they match.
+
+2. `rspec Curriculum_spec.rb` is the second test, which will check the following:
+   - That `Curriculum.setup_flashcard_lists` and `Curriculum.setup_flashcard_lists` will setup an array, and that these arrays will contain Lessons (class) and FlashcardContent (class) as expected.  The Curriculum class is essential to the app's ability to properly store and serve content to the user.
 
 ---
 ## Change Logs
+
+
+### Change Log: 0.017
+
+- Added testings for:
+  - Membership modules: can be run with `rspec Membership_spec.rb` which will check that valid and invalid sessions are returned based on input.
+  - Curriculum and its subclasses: run with `rspec Curriculum_spec.rb` which will test that went initialized, it should generate arrays of `Lessons` and `FlashcardContent`.
+
+- Removed deprecated functions.
 
 ### Change Log: 0.016
 

@@ -1,0 +1,99 @@
+{
+  "Module": {
+    "Title": "Animals" ,
+    "Author": "Sam O'Donnell",
+    "Last Last_Updated": "29/09/2021"
+  },
+  "Content": [
+    {
+      "Title": "Animaux Domestiques",
+      "Vocab": [
+        { "english" : "tortoise" , "translation" : ["tortue"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "cat" , "translation" : ["chat" , "chatte"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "dog" , "translation" : ["chien"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "fish" , "translation" : ["poisson"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "mouse" , "translation" : ["souris"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "chinchilla" , "translation" : ["chinchilla"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "canary" , "translation" : ["canari"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Animaux de Ferme",
+      "Vocab": [
+        { "english" : "donkey" , "translation" : ["âne"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "camel" , "translation" : ["chameau"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "cow" , "translation" : ["vache"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "good" , "translation" : ["cheval"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["cochon"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["taureau"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["chèvre"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lapin"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["brebis"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["abelle"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["poney"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Animaux de marins",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Insectes",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Animaux de la jungle",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Animaux de la forêt",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Animaux de l'Arctique",
+      "Vocab": [
+        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    }
+  ]
+}
+

@@ -19,6 +19,7 @@ module Membership
 
       next unless user_info.keys[0] == username.to_sym &&
       verify_hash_digest(user_info.values[0][:password]) == password
+
        return true
 
     rescue NoMethodError
@@ -47,15 +48,8 @@ module Membership
       password = self::Utils.request_password
     end
 
-    def self.test
-      return true
-    end
-
-    if Membership.authenticate_user(username, password)
-      session = Session.new(username, true)
-
-      return session
-
+    if self.authenticate_user(username, password)
+      Session.new(username, true)
     else
       Session.new('Guest', false)
     end
@@ -74,6 +68,7 @@ module Membership
     # Get username > check not taken > get password > hash password
     username = self::Utils.request_username
     raise UserExists if self::Utils.user_exists?(username)
+
     password = Utilities.salt_data(self::Utils.request_password)
     Utilities::Data.append_data(
       { username.to_sym => { username: username, password: password } }, Utilities.user_db_link

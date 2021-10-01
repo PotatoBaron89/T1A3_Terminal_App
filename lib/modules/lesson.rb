@@ -1,4 +1,4 @@
-require_relative 'curriculum'
+require_relative '../classes/curriculum'
 require_relative '../../app/controllers/content_controller'
 
 # fr = session.vocab[':Vocab'].values.map { |word| word[0]['word'] }

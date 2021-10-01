@@ -3,9 +3,9 @@ require 'colorize'
 require 'tty-box'
 
 require_relative './../lib/modules/members'
-require_relative 'controllers/display_controller'
+require_relative 'controllers/display_menus'
 require_relative '../lib/modules/lesson'
-require_relative '../lib/modules/curriculum'
+require_relative '../lib/classes/curriculum'
 
 require 'dotenv'
 Dotenv.load('../config.env')
@@ -23,7 +23,7 @@ end
 
 # Display Slashscreen
 
-puts DisplayController.display_splash if ENV["SKIP_SPLASH"] == 'false'
+puts DisplayMenus.display_splash if ENV["SKIP_SPLASH"] == 'false'
 
 # --- Start Loop to let user try login / register until successful or quit
 active = true
@@ -31,17 +31,17 @@ while active == true
 
   #    ---  Start Core Loop if Authenticated
   while session.is_authenticated
-    DisplayController.main_menu(session)
+    DisplayMenus.main_menu(session)
   end
 
   #    ---  SIGN-IN
   until session.is_authenticated
 
 
-    session = DisplayController.sign_in("Welcome #{session}, What would you like to do?".colorize(:yellow))
+    session = DisplayMenus.sign_in("Welcome #{session}, What would you like to do?".colorize(:yellow))
 
     handle_failed_login = lambda {
-      if DisplayController.yes_no('Would you like to register an account?')
+      if DisplayMenus.yes_no('Would you like to register an account?')
         session = Membership.register
       end
     }

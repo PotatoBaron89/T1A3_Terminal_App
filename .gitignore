@@ -10,7 +10,7 @@ Gemfile.lock
 InstalledFiles
 _yardoc
 doc/
-cache/
+cache/local_saves
 lib/bundler/man
 pkg
 rdoc
