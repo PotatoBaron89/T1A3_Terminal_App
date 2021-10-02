@@ -1,7 +1,11 @@
-require 'bcrypt'
-require 'json'
+begin
+  require 'bcrypt'
+  require 'json'
+rescue LoadError
+  puts 'You appear to be missing dependencies. Try run:'
+  puts '"bundle install"'.colorize(:yellow)
+end
 
-# require_relative '../../cache/place_holder_db/users.json'
 
 # @Description
 # Provides common tools required through the application

@@ -18,9 +18,9 @@ module Membership
     Utilities.user_db_get.each do |user_info|
 
       next unless user_info.keys[0] == username.to_sym &&
-      verify_hash_digest(user_info.values[0][:password]) == password
+                  verify_hash_digest(user_info.values[0][:password]) == password
 
-       return true
+      return true
 
     rescue NoMethodError
       puts 'Incorrect login information provided'
@@ -39,9 +39,8 @@ module Membership
 
   def self.login(username = nil, password = nil)
     system 'clear'
-    username == nil ? arg_passed = false : arg_passed = true
 
-    #check if params were passed, if not, request details
+    # check if params were passed, if not, request details
     if username == nil && password == nil
       puts 'Login to your account.'
       username = self::Utils.request_username
@@ -55,16 +54,12 @@ module Membership
     end
   end
 
-  def self.logout
-    puts 'Placeholder logout'
-  end
-
   # @description Register provides prompts to setup account
   # @return Returns a session object
   def self.register
     system 'clear'
-
     puts 'Create a new account.'
+
     # Get username > check not taken > get password > hash password
     username = self::Utils.request_username
     raise UserExists if self::Utils.user_exists?(username)
@@ -90,6 +85,7 @@ module Membership
     Dir.mkdir('../cache/place_holder_db/')unless File.exist?('../cache/place_holder_db/')
     unless File.exist?(Utilities.user_db_link)
       file = File.new('../cache/place_holder_db/users.json', 'w')
+
       file.puts('[]')
       file.close
     end
@@ -110,11 +106,20 @@ module Membership
     end
 
     def self.request_password
-      print 'Password: '
-      password = Utilities.hide_req_input
-      raise BadUsername, "Invalid password. Can't be less than 6 characters" if password.length < 6
 
-      password
+      active = true
+
+      while active
+        system 'clear'
+        print 'Password: '
+        password = Utilities.hide_req_input
+
+        if password.length < 6
+          active = DisplayMenus.yes_no('Password must be at least six characters long, try again?')
+        else
+          return password
+        end
+      end
 
     rescue BadUsername => e
       StandardError.let_user_retry(e)

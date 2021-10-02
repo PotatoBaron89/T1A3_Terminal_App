@@ -13,6 +13,7 @@ require_relative '../../lib/modules/listener'
 require_relative '../../lib/modules/members'
 require_relative 'display_content'
 
+
 # Documentation Needed
 module DisplayMenus
   @prompt = TTY::Prompt.new
@@ -56,7 +57,7 @@ module DisplayMenus
 
     @prompt.select(msg) do |menu|
       if ENV['DEVMODE'] == 'true'
-        menu.choice 'Dev Mode', -> { Session.new('sam', true) }
+        menu.choice 'Dev Mode', -> { Session.new('Sam', true) }
       end
       menu.choice 'Login', -> { Membership.login }
       menu.choice 'Register', -> { Membership.register }
@@ -115,11 +116,13 @@ module DisplayMenus
   def self.show_profile(session, msg = "#{session}'s Profile")
     system 'clear'
     TTY::Prompt.new.select(msg) do |menu|
-      menu.choice "Display Name: #{session}", -> { session.change_display_name }
+      menu.choice "#{session} -> Change Display Name", -> { session.change_display_name }
       menu.choice "Username: #{session.username}", -> { show_profile(session) }
       menu.choice "Your learnt vocab [Items: #{session.vocab[:Vocab].length}]",
-                  -> { list_known_words(session)
-                        show_profile(session) }
+                  -> { 
+                    list_known_words(session)
+                    show_profile(session) }
+      menu.choice 'Change Password', -> { session.change_password(session) }
       menu.choice 'Back', -> { main_menu(session) }
     end
   end
@@ -127,7 +130,7 @@ module DisplayMenus
   def self.list_known_words(session)
     system 'clear'
 
-    TTY::Prompt.new.select("Your known words:") do |menu|
+    TTY::Prompt.new.select('Your known words:') do |menu|
       menu.choice 'Back', -> { main_menu(session) }
       session.vocab[:Vocab].each do |item|
         menu.choice "#{item[:english]}       #{item[:translation].join(' / ')}"
@@ -159,35 +162,54 @@ module DisplayMenus
     i = Random.rand(2) if randomise_prompt
     word, second_word = second_word, word if i == 1
 
-    # Proc, Overrides default input handling
-    options = Proc.new { |key, session|
 
-      binding.irb if key.to_s == 'back_quote' && ENV['DEVMODE'] == 'true'
-      DisplayMenus.study_menu(session) if key.to_s == 'c'
+    # Display Card One, Options, Await Response
+    opt_list = 'C: Back    M: To Menu     ↑ :   Mark Correct    ↓ : Mark Incorrect   H :  Help    Any Other :  Next '
+
+    puts opt_list
+    print DisplayMenus.create_card(word, 'Prompt')
+
+    continue = ListenerContent.new.only_listen(session, &OPTIONS[:options_default])
+    return false if continue == false
+
+    # Display Card Two, Options, Await Response
+    system 'clear'
+
+    puts opt_list
+    print DisplayMenus.create_card(second_word, 'Answer', word)
+    continue = ListenerContent.new.only_listen(session, &OPTIONS[:options_default])
+
+    return false if continue == false
+    true
+  end
+
+  OPTIONS = {
+    # Proc, Overrides default input handling / Used with flashcards
+    options_default: lambda { |key, session|
+
+      if key.to_s == 'back_quote' && ENV['DEVMODE'] == 'true'
+        binding.irb
+      end
+      if key.to_s == 'c'
+        DisplayMenus.study_menu(session)
+        return false
+      end
       DisplayMenus.main_menu(session) if key.to_s == 'm'
       if key.to_s == 'h'
         DisplayMenus.print_message(['Entering your results is optional, but if you would like to',
                                     'simply press ↑ arrow for correct and ↓ down arrow for incorrect.'])
+        return false
       end
 
       # Override key to break loop
       correct?(true) if key.to_s == 'up'
       correct?(false) if key.to_s == 'down'
+      true
     }
+  }.freeze
 
-    # Display Card One, Options, Await Response
-    opt_list = "C: Back    M: To Menu     ↑ :   Mark Correct    ↓ : Mark Incorrect   H :  Help    Any Other :  Next "
-    puts opt_list
-    print DisplayMenus.create_card(word, 'Prompt')
-    ListenerContent.new.only_listen(session, &options)
 
-    # Display Card Two, Options, Await Response
-    system 'clear'
-    puts opt_list
-    print DisplayMenus.create_card(second_word, 'Answer', word)
-    ListenerContent.new.only_listen(session, &options)
 
-  end
 end
 
 

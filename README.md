@@ -156,8 +156,23 @@ Note that the options for flashcards are also displayed at the top of the consol
 
 
 ### Error Handling
-Blah blah.
+User related errors will provide clear response to the user.
 
+- Registration
+  - Will provide error message if the username is < 3 characters long, letting them know that it must be at least 3 characters.  They will then be another attempt.
+  - Will provide error message if password is < 6 characters, letting them know of these requirements and giving them another chance to input their password.
+
+- Change Password
+  - Similar to registration, new password must be 6 or more characters. If a shorter input is given, the user is given an error message informing them of the minimum requirements for a valid password.  They will be given an attempt to try again or cancel.
+  - Option to abort process is given after entering incorrect current password.
+  - Option to abort process is given after entering invalid new password.
+
+- Change Display Name
+  - If a display name of 0 characters is given, user is informed that display name must be at least 1 character long.  They will be given the option to try again or return.
+
+- Dependencies
+  - When the application can't find required files, it will throw a Load error and give the information on how to resolve the issue `bundle install`
+- Loading user_data, error is given to the user if invalid json is found in their save.  It will inform them and will reset the file.  Unfortunately, all previous data is lost.
 ---
 ## Implementation Plan
 Blah blah.
@@ -229,20 +244,21 @@ Eg: `ruby index.rb -d -login user123 password123 -splash`
 
 ### Dependencies
 
-- bcrypt (~> 3.1)
-- byebug
-- capybara
 - colorize (~> 0.8.1)
 - columnize (~> 0.9.0)
 - dotenv (~> 2.7)
 - json (~> 2.5)
-- mutant-rspec
 - remedy (~> 0.3.0)
-- rspec-core
-- strings (~> 0.2.1)
 - tty-box (~> 0.7.0)
 - tty-font (~> 0.5.0)
 - tty-prompt (~> 0.23.1)
+
+Development:
+- bcrypt (~> 3.1)
+- byebug
+- capybara
+- mutant-rspec
+- rspec-core
 
 ### System / Hardware Requirements
 
@@ -270,7 +286,20 @@ There are currently two tests that can be run.
 ## Change Logs
 
 
-### Change Log: 0.017
+### Change Log: 0.018
+- Added ability to change password
+- Change username and password is more robust. Will now handle invalid inputs and give the user options to abort.
+- Fixed memory leak associated with leaving flashcard mode using `c` or `m` and corresponding incorrect behavior whilst navigating after leaving flashcard mode.
+- Removed unused methods
+- Modified only_listen method to no longer loop, but return the first keypress.
+
+- Additional Error handling
+  - Reset corrupted save files and reload.
+  - Change password.
+  - Change display name.
+  - Loading external gems
+
+ ### Change Log: 0.017
 
 - Added testings for:
   - Membership modules: can be run with `rspec Membership_spec.rb` which will check that valid and invalid sessions are returned based on input.

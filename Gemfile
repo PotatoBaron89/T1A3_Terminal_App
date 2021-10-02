@@ -28,9 +28,6 @@ gem "tty-box", "~> 0.7.0"
 
 gem "dotenv", "~> 2.7"
 
-
-gem "strings", "~> 0.2.1"
-
 gem "columnize", "~> 0.9.0"
 
 gem "remedy", "~> 0.3.0"

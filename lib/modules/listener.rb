@@ -1,7 +1,13 @@
 # frozen_string_literal: true
-require 'remedy'
-require_relative './interactions'
 
+begin
+  require 'remedy'
+rescue LoadError
+  puts 'You appear to be missing dependencies. Try run:'
+  puts '"bundle install"'.colorize(:yellow)
+end
+
+require_relative './interactions'
 
 ##
 # @description Creates block of content that accepts custom input. Input defined by passed proc (see below)
@@ -56,14 +62,12 @@ class ListenerContent
 
   def only_listen(session = nil, &block)
     interaction = Interaction.new
-    interaction.loop do |key|
-      @last_key = key
-      block.call(key, session) if block_given?
-      interaction.quit! if key == 'q'
+    @last_key = interaction.get_key
+    # continue is to find out if the option is one that means we want to leave loop early
+    true
 
-      interaction.debug! if key.to_s == 'back_quote'# && @_devmode == true
-      break
-    end
+    interaction.quit! if @last_key == 'q'
+    return block.call(@last_key, session) if block_given?
   end
 
   # Renders header and footer, cannot change core content for now

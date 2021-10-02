@@ -23,75 +23,72 @@
         { "english" : "donkey" , "translation" : ["âne"] , "type" : ":noun :countable" , "gender" : "masculine" },
         { "english" : "camel" , "translation" : ["chameau"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
         { "english" : "cow" , "translation" : ["vache"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
-        { "english" : "good" , "translation" : ["cheval"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["cochon"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["taureau"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["chèvre"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["lapin"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["brebis"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["abelle"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["poney"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
-        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+        { "english" : "bull" , "translation" : ["taureau"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "goat" , "translation" : ["chèvre"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "rabit" , "translation" : ["lapin"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "sheep" , "translation" : ["brebis"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "bée" , "translation" : ["abeille"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "poney" , "translation" : ["poney"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "caribou" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "llama" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "rat" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
       ]
     },
     {
       "Title": "Animaux de marins",
       "Vocab": [
-        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
-        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
-      ]
-    },
-    {
-      "Title": "Insectes",
-      "Vocab": [
-        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
-        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
-      ]
-    },
-    {
-      "Title": "Animaux de la jungle",
-      "Vocab": [
-        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "mantaray" , "translation" : ["manta-ray"] , "type" : ":noun :countable" , "gender" : "na" } ,
+        { "english" : "octopus" , "translation" : ["poulpe"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "starfish" , "translation" : ["étoile de mer"] , "type" : ":noun :countable" , "gender" : "feminine" },
+        { "english" : "coral" , "translation" : ["corail"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "shell" , "translation" : ["coquille"] , "type" : ":noun :countable" , "gender" : "feminine" },
+        { "english" : "orca whale" , "translation" : ["orque"] , "type" : ":noun :countable" , "gender" : "feminine" },
+        { "english" : "seahorse" , "translation" : ["hippocampe"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "dolphin" , "translation" : ["dauphin"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "turtle" , "translation" : ["tortue de mer"] , "type" : ":noun :countable" , "gender" : "feminine" },
+        { "english" : "shark" , "translation" : ["requin"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "whale" , "translation" : ["baleine"] , "type" : ":noun :countable" , "gender" : "feminine" },
+        { "english" : "crab" , "translation" : ["crabe"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "crayfish" , "translation" : ["écrevisse", "langouste"] , "type" : ":noun :countable" , "gender" : "na" },
         { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
       ]
     },
     {
       "Title": "Animaux de la forêt",
       "Vocab": [
-        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
-        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+        { "english" : "buffalo" , "translation" : ["buffle"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "lynx" , "translation" : ["lynx"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "bear" , "translation" : ["ours"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "coyote" , "translation" : ["coyote"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "ferret" , "translation" : ["furet"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "fox" , "translation" : ["renard"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "wolf" , "translation" : ["loup"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "bison" , "translation" : ["bison"] , "type" : ":noun :countable" , "gender" : "masculine" }
+      ]
+    },
+    {
+      "Title": "Animaux de la jungle",
+      "Vocab": [
+        { "english" : "tiger" , "translation" : ["tigre"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "crocodile" , "translation" : ["crocodile"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "jaguar" , "translation" : ["jaguar"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "hippopotomus" , "translation" : ["hippopotame"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "zebra" , "translation" : ["zèbre"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "panda" , "translation" : ["panda"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "lion" , "translation" : ["lion"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "giraffe" , "translation" : ["girafe"] , "type" : ":noun :countable" , "gender" : "feminine" }
       ]
     },
     {
       "Title": "Animaux de l'Arctique",
       "Vocab": [
-        { "english" : "good" , "translation" : ["mouton"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["caribou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
-        { "english" : "good" , "translation" : ["lama"] , "type" : ":noun :countable" , "gender" : "masculine" },
-        { "english" : "good" , "translation" : ["nutria"] , "type" : ":noun :countable" , "gender" : "masculine" }
+        { "english" : "orca whale" , "translation" : ["orque"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "whale" , "translation" : ["baleine"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "owl" , "translation" : ["hibou"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "narval whale" , "translation" : ["narval"] , "type" : ":noun :countable" , "gender" : "feminine" } ,
+        { "english" : "polar bear" , "translation" : ["ours blanc"] , "type" : ":noun :countable" , "gender" : "masculine" } ,
+        { "english" : "artic wolf" , "translation" : ["loup arctique"] , "type" : ":noun :countable" , "gender" : "masculine" },
+        { "english" : "snow fox" , "translation" : ["renard artique"] , "type" : ":noun :countable" , "gender" : "masculine" }
       ]
     }
   ]
