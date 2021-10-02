@@ -197,7 +197,7 @@ module DisplayMenus
       if key.to_s == 'h'
         DisplayMenus.print_message(['Entering your results is optional, but if you would like to',
                                     'simply press ↑ arrow for correct and ↓ down arrow for incorrect.'])
-        return false
+        return true
       end
 
       # Override key to break loop

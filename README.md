@@ -275,7 +275,33 @@ Load Content then begin a loop `active`, whislt active:
 ### The 'Sprinkles' / Roadmap
 
 Learning Tools:
-- Study Module: Which allows you to practice sentences in a controlled manner.  To be built after MPV is completed.
+- Study Module: Which allows you to practice sentences in a controlled manner.  To be built after MPV is completed. EG.
+
+Start with:
+```
+{ "It is [:adj :desc]":  "c'est [:adj :desc]"}
+```
+Then:
+```
+{ "It isn't [:adj :desc]":  "Ce n'est pas [:adj :desc]"}
+```
+Then: 
+```
+{ "It is a [:noun :c]":  "Ce n'est pas [:noun :c]"},
+{ "It isn't a [:noun :c]":  "Ce n'est pas [:noun :c]"}
+```
+
+Then:
+```
+{ "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun]"},
+{ "It is a [:adj] [:noun :c]":  "C'est [:un] [:noun] [:adj]"},
+{ "It is not a [:adj] [:noun :c]":  "Ce n'est pas [:un] [:noun] [:adj]"},
+{ "It is not a [:adj] [:noun :c]":  "Ce n'est pas [:un] [:noun] [:adj]"}
+```
+
+Where marked worked (eg `[:adj :desc]`) are replaced with matching words from the users known vocabulary.  Every lesson has its built in vocab so that if the user has no matching words, there is still some that can be subbed in too.
+
+
 
 Profile:
    - Change display name
@@ -288,6 +314,12 @@ Profile:
 ### Installation
 
 You can run this application by cloning this Git Repo.  Then, dependencies will need to be installed, which can be done by using `bundle install`.
+
+A simpler way is to run the `run.sh` script found in `./bin` which will handle this for you.
+
+`run.sh` will lead you through a set of options allowing you to set up the application to your needs.
+
+N.B. Crashes are likely if you are **not** in WSL.
 
 ### How to use the app
 
@@ -348,6 +380,17 @@ There are currently two tests that can be run.
 
 ---
 ## Change Logs
+
+### Change Log: 0.020
+
+- Added a bash script `run.sh` which can be found in `./bin/`.  It will handle installation of dependencies and setting up the application.
+- Fixed bug where pushing `h` whilst in flashcard mode would return the user back to the main menu.
+- Updated Documentation.
+
+### Change Log: 0.019
+
+- Updated readme / documentation.
+- Fixed bug with the `Curriculum` test caused by a require_relative pointing to the wrong location.
 
 
 ### Change Log: 0.018
