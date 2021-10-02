@@ -162,7 +162,6 @@ module DisplayMenus
     i = Random.rand(2) if randomise_prompt
     word, second_word = second_word, word if i == 1
 
-
     # Display Card One, Options, Await Response
     opt_list = 'C: Back    M: To Menu     ↑ :   Mark Correct    ↓ : Mark Incorrect   H :  Help    Any Other :  Next '
 
@@ -191,7 +190,7 @@ module DisplayMenus
         binding.irb
       end
       if key.to_s == 'c'
-        DisplayMenus.study_menu(session)
+        DisplayMenus.flash_card_menu(session)
         return false
       end
       DisplayMenus.main_menu(session) if key.to_s == 'm'
@@ -207,9 +206,6 @@ module DisplayMenus
       true
     }
   }.freeze
-
-
-
 end
 
 

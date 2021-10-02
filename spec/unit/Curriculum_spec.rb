@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 require_relative '../../lib/modules/utilities'
 require_relative '../../lib/modules/session'
-require_relative '../../lib/modules/curriculum'
+require_relative '../../lib/classes/curriculum'
 require_relative '../../lib/modules/lesson'
-require_relative '../../lib/modules/flashcard_content'
+require_relative '../../lib/classes/flashcard_content'
 require_relative '../spec_helper'
 require 'dotenv'
 Dotenv.load('./config.env')

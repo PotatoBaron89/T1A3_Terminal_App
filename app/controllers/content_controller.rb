@@ -2,7 +2,6 @@
 # Documentation needed
 module ContentController
   CACHE = {
-
     # Specifcally for pulling vocab from lessons
     get_word_object: lambda { |array|
       res = array.map do |arr|

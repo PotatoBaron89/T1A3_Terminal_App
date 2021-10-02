@@ -3,6 +3,7 @@
 ### Table of Contents
 ```
 - Links
+  - Github repo
   - Trello Board
   - Control Flow Diagram
 - Software Development Plan
@@ -31,6 +32,7 @@
   - Dependencies
   - System / Hardware Requirements
 - Tests
+- Change logs
 
 ```
 
@@ -49,8 +51,7 @@ https://trello.com/b/VfMGtHVd/t1a3-terminal-app
 
 ### Control Flow Diagram
 
-
-https://drive.google.com/file/d/1-uXS5uDvh4fZRWFyCV8ZCBZFDszmmXYX/view?usp=sharing
+[Control Flow Diagram](https://viewer.diagrams.net/?tags=%7B%7D&highlight=0000ff&edit=_blank&layers=1&nav=1&title=T1A3_Samuel_ODonnell_Flow_Chart#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1-uXS5uDvh4fZRWFyCV8ZCBZFDszmmXYX%26export%3Ddownload)
 
 ---
 
@@ -90,6 +91,10 @@ As mentioned, the main mechanic at this stage is that of flashcards. The underly
 
 The application is designed to be run with a reasonably large console size.  If you are experience issues with content displaying strangely, try to increase the window size.
 
+Once the user logs in, they will be created with the main menu where they can choose what they would like to do.  This including choosing a topic to study based on the content they have.  From there they can study vocabulary through flashcards.
+
+Alternatively, they have the option to view the profile page, where they can view their username, change their password and / or display name.  Furthermore, they can view a list of all the previous words they have studied here.
+
 ---
 ## Features
 
@@ -107,7 +112,7 @@ Allows anyone to quickly make their own flashcard modules to use within the appl
 In addition to the above, the application will list each each subcategory listed within the flashcard module.  For example, you may have a flashcard.json file listing animals.  Then you may have sections on domestic animals, farm animals, zoo animals, sea creatures etc.  This allows the user to quickly hone in on the content they wish to learn.
 
 ### Feature 5 | Profile
-The profile form allows the user to quickly access stored information, such as their username, display name, words learnt (listed in both English and French).  This form also provides a means of updating their Display name.
+The profile form allows the user to quickly access stored information, such as their username, display name, words learnt (listed in both English and French).  This form also provides a means of updating their Display name.  Finally, they can change their password here, which will require that they verify their current password.
 
 ### Feature 6 | Security
 
@@ -175,47 +180,106 @@ User related errors will provide clear response to the user.
 - Loading user_data, error is given to the user if invalid json is found in their save.  It will inform them and will reset the file.  Unfortunately, all previous data is lost.
 ---
 ## Implementation Plan
-Blah blah.
-
-
 
 ### MVP
 
-Features are to be implemented as follows:
+Features are to be implemented in blocks in the order as follows.
 
-1. Create a sign-in system.
-   - Create an account. Passwords must be hashed to preserve user security.
-   - Login to an existing account.
-   - Instantly sign in with Devmode (if dev mode is enabled)
-   - User account information should be stored on a `pseudo-server`, aka separate dir in local for now.
-   - This requires methods handling login, registration, appending new users, hashing passwords, checking a username already exists.
+First we need to setup our sign-in system, save / load functionality and session data.
+
+ - handling login, registration, appending new users, hashing passwords, checking a username already exists.
+ - This section requires
+    - **Membership Module**
+      - `authenticate_user(username, password` responsible for checking provided username and password against database.
+      - `verify_hash_digest(password)` used to check given password against the encrypted version.
+      - `login` used to handle login logic. It makes a call to `authenticate_user` to verify.
+      - `register` method to handle registration. Makes calls to `Utils.request_username`, `Utilities.append_data` and `Utilities.salt_data` amonsgt others. Provide all checks are passed, returns an authenticated session.
+      - `setup_db` responsible for checking our pseudo-db exists, and creating one if it does not.
+      - Nested **Utils Modlule**
+        - `request_username` Since this will likely be reused, have a function to handle gettign and retreiving of username, requiring validation (3 or more characters)
+        - `request_password` same as above but will hide user input with `Utilities.hide_req_input`.  Also responsible for validation. Returns password once validated.
+        - `user_exists?(username)` checks if the given username exists in the database.
+        
+    - **Session class** to handle the users session information.  Session class is a critical component used through the entire application.  It is used to handle temporary user information and session details necessary to the operation of the app.
+      - `change_display_name` this method gives the user the ability to change their current username.
+      - `sign_out` handles logic of signing the user out.  Done by changing `is_authenticated` to false.
+      - `change_password` handles the logic, input and display of letting the user change their password.
+      - `USER` object, containing procs:
+        - `setup_user_cache` creates a local save file for the user, if one does not already exist.
+        - `user_data_path` returns the path to the users save file in string form.
+        - `user_dir_path` returns a path the `dir` where saves are stored.
+        - `word_add_to_vocab(session, word)` adds new vocab the user has seen to their session cache.
+        - `save_session(session)` responsible  for saving pertinent data to the users local save.
+        - `load_session(session)` responsible for loading local save if one exists. Uses existing session data to find the link.
+        - `get_diff_vocab(session, save_path)` will compare vocab from session and save and return unique.
+    - **Utility module** which provides access to methods such as:
+        - `get_lesson_links` (filepath to lessons): Automatically finds lessons by searching specified directory and looking for files with a .json extension. Not responsible for verifying if they are valid json files.
+        - `get flashcards_links` (filepath to flashcards): Same as above, but looking in a different directory for flashcards.  Not responsible for validating the json files.
+        - `user_db_link` which stores a link to the psuedo_db for later use. `'../cache/place_holder_db/users.json'
+        - `user_db_get`, opens, parses and returns the contents of the pseudodb.
+        - `load_json(file)` handles single links and arrays of links.  Will parse all given links and returns each of them.
+        - `hide_req_input` custom method to get userinput, but hide what they are typing.  Returns the users input.  Used for passwords.
+        - `check_args` - responsible for checking and processing args given in command prompt.
+        - NESTED: Data Module
+          - `append_data`: Used to add new data to given json file.
+
+This is used to allow the user to create an account, have their saves loaded and saved and more.  Will setup session information to use throughout the app as mentioned earlier.
+
+  
 2. Since most menus require pulling data to populate them.  We need to create some sample flashcard.json files.
-3. Setup appropriate menus.
-   1. Main Menu:
-      - Study (devmode only, as it is under development.)
-      - Flashcards
-      - Profile
-      - About
-      - Logout: To be implemented as added (2 minute job)
-      - Exit To be implemented as added (5 second job)
-   2. Flashcard menu:
+   - **Curriculum Class**: 
+     - Child class, ***FlashcardContent***
+     - Child class, ***Lesson***
+   - Curriculum class is responsible for storing arrays of its two child classes.
+   - `FlashcardContent` caches metadata about the flashcard module upon initialization.
+     - Has a method `load_flashcard(sect_index)` which is responsible for loading specific section of content for use.
+   - `Lessons` caches metadata about the lesson upon initialization.
+     - Has a method `load_lesson(sect_index)` which is responsible for loading specific section of content for use.
+
+
+Next we need to create and setup our menus and other displays which is handled with `DisplayMenus` module.
+1. `display_splash` prints the splashscreen.
+2. Sign-in is handled with `sign_in`
+3. Main Menu: handled with `main_menu`, links to the following
+   - Study (devmode only, as it is under development.) -> calls `study_menu`
+   - Flashcards -> calls `flash_card_menu`
+   - Profile -> calls `show_profile`
+   - About -> calls anon proc
+   - Logout -> set `session.is_authenticated = false`
+   - Exit -> run `quit`
+4. Flashcard menu:
     - List every compatible json module found.  Should only pull metadata from each lesson at this stage, not have all information from all lessons in system memory!
-    - Back.
-   3. Profile Menu:
-    - Username
-    - Display Name
-    - Known Words [qty: 10]
-4. Setup flashcard system.
-   1. Must have methods to:
-     - get data from the relevant file only and return objects containing necessary information.
-     - handle user input (allow user to mark as correct, incorrect, move to next slide etc)
-     - Save each knew word they come across to their vocabulary.  This will be used to create 'Revision' tools which will only display seen words and to give more flexibility to the study tool when it is finished.  Moreover, allows the user to see what words they have learnt.
-5. About page
+    - Back -> `main_menu`
+5. Profile Menu:
+    - Username -> Not clickable
+    - Change Display Name -> calls `session.change_display_name`
+    - Change Password -> calls `session.change_password`
+    - Known Words [qty: 10] -> calls `list_known_words`
+
+From here we need to setup the handling of our main feature.
+
+6. Setup flashcard system.
+
+When a selection is made, pass the `index` (of file) `sect_index` (module within file) and `session` info and call `flash_card_controller` which is responsible for core loop of flashcards.
+
+Load Content then begin a loop `active`, whislt active:
+- Generate random number between 0 and number of flashcards in the loaded module.
+- Check this word != last word, generate new number if it is.
+- Call `word_add_to_vocab` and `save_session`
+- Call `DisplayMenus.prompt_flashcard(word_en, word_fr)`
+  - prompt_flashcard listens for users response
+  - Return true / false, which is passed to `active` based on user response.
 
 
 
-### The 'Sprinkles'
-Blah blah.
+### The 'Sprinkles' / Roadmap
+
+Learning Tools:
+- Study Module: Which allows you to practice sentences in a controlled manner.  To be built after MPV is completed.
+
+Profile:
+   - Change display name
+   - Change password
 
 
 ---
