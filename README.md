@@ -378,8 +378,16 @@ There are currently two tests that can be run.
 2. `rspec Curriculum_spec.rb` is the second test, which will check the following:
    - That `Curriculum.setup_flashcard_lists` and `Curriculum.setup_flashcard_lists` will setup an array, and that these arrays will contain Lessons (class) and FlashcardContent (class) as expected.  The Curriculum class is essential to the app's ability to properly store and serve content to the user.
 
+3. ***The easiest way*** is to run the tests is with `installation.sh` shellscript in the `./bin` dir.
+
 ---
 ## Change Logs
+
+### Change Log: 0.021
+
+- Added a `tests.sh` which will allows for easy testing.
+- Added a `installation.sh` which allows you to install development dependencies.
+
 
 ### Change Log: 0.020
 

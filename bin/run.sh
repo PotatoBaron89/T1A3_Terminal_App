@@ -5,9 +5,7 @@ echo "install dependencies? (must be done at least once) y/n"
 read -r install
 
 if [ "$install" == "y" ]; then
-  bundle install
-  read -p "Installation complete... Press enter to continue"
-  clear
+  bash installation.sh
 fi
 
 echo "login now? y/n"
